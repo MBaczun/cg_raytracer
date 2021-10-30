@@ -7,6 +7,7 @@
 #define CAMERA_H_
 
 #include "rapidjson/document.h"
+#include "core/RayHitStructs.h"
 
 
 using namespace rapidjson;
@@ -45,7 +46,7 @@ public:
 	// other camera functions (to complete)
 	//
 
-
+	virtual Ray* rasterToRay(int x, int y)=0;
 
 
 

@@ -30,6 +30,8 @@ public:
 	//
 	void printCamera();
 
+	Ray* rasterToRay(int x, int y);
+
 };
 
 

@@ -23,14 +23,20 @@ Vec3f* RayTracer::render(Camera* camera, Scene* scene, int nbounces){
 
 	//----------main rendering function to be filled------
 
-
-
-
-
-
+	for (int x=0; x<camera->getWidth(); x++) {
+		for (int y=0; y<camera->getHeight(); y++) {
+			Ray* ray = camera->rasterToRay(x, y);
+			int index = x + (y*camera->getWidth());
+			pixelbuffer[index] = * castRay(ray, scene);
+		}
+	}
 
 	return pixelbuffer;
 
+}
+
+Vec3f* RayTracer::castRay(Ray* ray, Scene* scene) {
+	return new Vec3f(1, 0 ,0);
 }
 
 /**
@@ -40,20 +46,13 @@ Vec3f* RayTracer::render(Camera* camera, Scene* scene, int nbounces){
  *
  * @return the tonemapped image
  */
-Vec3f* RayTracer::tonemap(Vec3f* pixelbuffer){
-
+Vec3f* RayTracer::tonemap(Vec3f* pixelbuffer, int size){
 	//---------tonemapping function to be filled--------
-
-
-
-
-
+	for (int i=0; i<size; i++) {
+		pixelbuffer[i] = pixelbuffer[i]*255;
+	}
 	return pixelbuffer;
-
 }
-
-
-
 
 
 } //namespace rt

@@ -48,5 +48,4 @@ Camera* Camera::createCamera(Value& cameraSpecs){
 }
 
 
-
 } //namespace rt

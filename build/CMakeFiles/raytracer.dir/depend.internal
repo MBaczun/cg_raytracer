@@ -3,6 +3,8 @@
 
 CMakeFiles/raytracer.dir/cameras/Pinhole.cpp.o
  ../core/Camera.h
+ ../core/RayHitStructs.h
+ ../math/geometry.h
  ../parsers/rapidjson/allocators.h
  ../parsers/rapidjson/document.h
  ../parsers/rapidjson/encodedstream.h
@@ -27,6 +29,8 @@ CMakeFiles/raytracer.dir/cameras/Pinhole.cpp.o
  /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/cameras/Pinhole.h
 CMakeFiles/raytracer.dir/cameras/ThinLens.cpp.o
  ../core/Camera.h
+ ../core/RayHitStructs.h
+ ../math/geometry.h
  ../parsers/rapidjson/allocators.h
  ../parsers/rapidjson/document.h
  ../parsers/rapidjson/encodedstream.h
@@ -53,6 +57,8 @@ CMakeFiles/raytracer.dir/core/Camera.cpp.o
  ../cameras/Pinhole.h
  ../cameras/ThinLens.h
  ../core/Camera.h
+ ../core/RayHitStructs.h
+ ../math/geometry.h
  ../parsers/rapidjson/allocators.h
  ../parsers/rapidjson/document.h
  ../parsers/rapidjson/encodedstream.h

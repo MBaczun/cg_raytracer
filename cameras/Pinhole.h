@@ -29,6 +29,9 @@ public:
 	// print function (implementing abstract function of base class)
 	//
 	void printCamera();
+
+	Ray* rasterToRay(int x, int y);
+	
 };
 
 

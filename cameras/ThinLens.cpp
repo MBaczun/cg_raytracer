@@ -31,4 +31,8 @@ namespace rt{
 		printf("width: %dpx, height: %dpx, fov:%d \n", width, height, fov);
 	}
 
+	Ray* ThinLens::rasterToRay(int x, int y){
+		return NULL;
+	}
+
 } //namespace rt

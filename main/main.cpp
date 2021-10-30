@@ -55,7 +55,7 @@ int main(int argc, char* argv[]){
 
 
 	//convert linear RGB pixel values [0-1] to range 0-255
-	RayTracer::tonemap(pixelbuffer);
+	RayTracer::tonemap(pixelbuffer,camera->getWidth()*camera->getHeight());
 
 
 
