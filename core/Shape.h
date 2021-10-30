@@ -9,6 +9,10 @@
 #include "core/RayHitStructs.h"
 #include "core/Material.h"
 
+#include "rapidjson/document.h"
+
+using namespace rapidjson;
+
 namespace rt{
 
 class Shape{
@@ -17,7 +21,7 @@ public:
 	//
 	// Constructors
 	//
-	Shape();
+	Shape(){};
 
 	//
 	// Destructor (must be overriden in subclass)
@@ -28,6 +32,8 @@ public:
 	// Shape abstract methods (to be implemented by subclasses)
 	//
 	virtual Hit intersect(Ray)=0;
+
+	static Shape* createShape(Value& cameraSpecs);
 
 
 protected:

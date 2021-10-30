@@ -9,7 +9,7 @@
 
 namespace rt{
 
-
+PointLight::PointLight():LightSource(){}
 
 
 
