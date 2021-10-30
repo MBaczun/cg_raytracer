@@ -22,6 +22,7 @@ public:
 	// Constructors
 	//
 	Shape(){};
+	Shape(Material* m):material(m){};
 
 	//
 	// Destructor (must be overriden in subclass)

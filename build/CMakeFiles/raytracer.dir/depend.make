@@ -101,6 +101,7 @@ CMakeFiles/raytracer.dir/core/LightSource.cpp.o: ../parsers/rapidjson/stream.h
 CMakeFiles/raytracer.dir/core/LightSource.cpp.o: ../core/LightSource.cpp
 CMakeFiles/raytracer.dir/core/LightSource.cpp.o: ../core/LightSource.h
 
+CMakeFiles/raytracer.dir/core/Material.cpp.o: ../math/geometry.h
 CMakeFiles/raytracer.dir/core/Material.cpp.o: ../core/Material.cpp
 CMakeFiles/raytracer.dir/core/Material.cpp.o: ../core/Material.h
 
@@ -273,6 +274,7 @@ CMakeFiles/raytracer.dir/main/main.cpp.o: ../parsers/rapidjson/stream.h
 CMakeFiles/raytracer.dir/main/main.cpp.o: ../main/main.cpp
 
 CMakeFiles/raytracer.dir/materials/BlinnPhong.cpp.o: ../core/Material.h
+CMakeFiles/raytracer.dir/materials/BlinnPhong.cpp.o: ../math/geometry.h
 CMakeFiles/raytracer.dir/materials/BlinnPhong.cpp.o: ../materials/BlinnPhong.cpp
 CMakeFiles/raytracer.dir/materials/BlinnPhong.cpp.o: ../materials/BlinnPhong.h
 

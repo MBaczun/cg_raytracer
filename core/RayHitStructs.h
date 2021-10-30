@@ -19,6 +19,8 @@ struct Ray{
 	RayType raytype;
 
 	//----------Ray variables to be filled------
+	Vec3f origin;
+	Vec3f dir;
 };
 
 

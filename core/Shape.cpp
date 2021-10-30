@@ -22,12 +22,15 @@ Shape* Shape::createShape(Value& shapeSpecs){
 
 	std::string shapeType=shapeSpecs["type"].GetString();
 
-	//return camera object based on camera specs
+	Vec3f diffuse = Vec3f(shapeSpecs["material"]["diffusecolor"][0].GetFloat(),
+						  shapeSpecs["material"]["diffusecolor"][1].GetFloat(),
+						  shapeSpecs["material"]["diffusecolor"][2].GetFloat());
+
 	if (shapeType.compare("sphere")==0){
 		Vec3f pos = Vec3f(shapeSpecs["center"][0].GetFloat(), 
 		                  shapeSpecs["center"][1].GetFloat(), 
 					      shapeSpecs["center"][2].GetFloat());
-		return new Sphere(pos, shapeSpecs["radius"].GetFloat());
+		return new Sphere(pos, shapeSpecs["radius"].GetFloat(), diffuse);
 
 	}
     //else if (shapeType.compare("triangle")==0){

@@ -21,7 +21,7 @@ public:
 	// Constructors
 	//
 	Sphere();
-	Sphere(Vec3f center, float radius):center(center), radius(radius){};
+	Sphere(Vec3f center, float radius, Vec3f diffuse):center(center), radius(radius), Shape(new Material(diffuse)){};
 
 	virtual ~Sphere();
 

@@ -6,13 +6,21 @@
 #ifndef MATERIAL_H_
 #define MATERIAL_H_
 
+#include "math/geometry.h"
+
 namespace rt{
 
 class Material{
 public:
+    Material(){};
+    Material(Vec3f dif):diffuse(dif){};
 
+    Vec3f getDiffuse(){
+        return diffuse;
+    }
 
-private:
+protected:
+    Vec3f diffuse;
 };
 
 

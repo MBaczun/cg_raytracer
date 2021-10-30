@@ -102,6 +102,7 @@ CMakeFiles/raytracer.dir/core/LightSource.cpp.o
  /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/LightSource.cpp
  /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/LightSource.h
 CMakeFiles/raytracer.dir/core/Material.cpp.o
+ ../math/geometry.h
  /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/Material.cpp
  /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/Material.h
 CMakeFiles/raytracer.dir/core/RayTracer.cpp.o
@@ -274,6 +275,7 @@ CMakeFiles/raytracer.dir/main/main.cpp.o
  /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/main/main.cpp
 CMakeFiles/raytracer.dir/materials/BlinnPhong.cpp.o
  ../core/Material.h
+ ../math/geometry.h
  /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/materials/BlinnPhong.cpp
  /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/materials/BlinnPhong.h
 CMakeFiles/raytracer.dir/shapes/BVH.cpp.o
