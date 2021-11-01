@@ -21,7 +21,7 @@ public:
 	// Constructors
 	//
 	Camera(){};
-	Camera(int height, int width, int fov):height(height), width(width), fov(fov){};
+	Camera(int height, int width, int fov, Vec3f pos, Vec3f lookat, Vec3f up):height(height), width(width), fov(fov), pos(pos), lookat(lookat), up(up){};
 
 	//
 	// Destructor
@@ -88,6 +88,9 @@ protected:
 	int height;
 	int width;
 	int fov; //field of view
+	Vec3f pos;
+	Vec3f lookat;
+	Vec3f up;
 
 };
 

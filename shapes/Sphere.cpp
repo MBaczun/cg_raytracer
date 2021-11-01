@@ -25,7 +25,13 @@ Sphere::~Sphere(){}
 
 		Hit h;
 		//-----------to be implemented -------------
-
+		Vec3f oc = ray.origin - center;
+		float a = ray.dir.dotProduct(ray.dir);
+		float b = 2.0 * oc.dotProduct(ray.dir);
+		float c = oc.dotProduct(oc) - radius*radius;
+		float discriminant = b*b - 4*a*c;
+		if (discriminant>0) h.hit = true;
+		else h.hit = false;
 
 		return h;
 

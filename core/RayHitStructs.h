@@ -28,6 +28,7 @@ struct Hit{
 
 	Vec3f point; //point where ray hits a shape
 	//----------Hit variables to be filled------
+	bool hit;
 
 };
 

@@ -27,7 +27,7 @@ public:
 
 private:
 
-	static Vec3f* castRay(Ray* ray, Scene* scene);
+	static Vec3f castRay(Ray* ray, Scene* scene);
 
 };
 

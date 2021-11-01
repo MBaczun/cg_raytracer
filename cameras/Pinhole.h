@@ -8,6 +8,7 @@
 #define PINHOLE_H_
 
 #include "core/Camera.h"
+#include "math/geometry.h"
 
 namespace rt{
 
@@ -18,7 +19,7 @@ public:
 	// Constructors
 	//
 	Pinhole();
-	Pinhole(int width, int height, int fov);
+	Pinhole(int width, int height, int fov, Vec3f pos, Vec3f lookat, Vec3f up);
 
 	//
 	//Destructor
@@ -31,6 +32,9 @@ public:
 	void printCamera();
 
 	Ray* rasterToRay(int x, int y);
+
+private:
+	Matrix44f* camToWorld;
 	
 };
 

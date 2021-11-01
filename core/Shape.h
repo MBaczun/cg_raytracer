@@ -36,6 +36,9 @@ public:
 
 	static Shape* createShape(Value& cameraSpecs);
 
+	Vec3f diffuse() {
+		return material->getDiffuse();
+	}
 
 protected:
 

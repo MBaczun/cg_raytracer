@@ -3,6 +3,7 @@
  *
  */
 #include "RayTracer.h"
+#include <iostream>
 
 
 namespace rt{
@@ -26,8 +27,9 @@ Vec3f* RayTracer::render(Camera* camera, Scene* scene, int nbounces){
 	for (int x=0; x<camera->getWidth(); x++) {
 		for (int y=0; y<camera->getHeight(); y++) {
 			Ray* ray = camera->rasterToRay(x, y);
+			//printf("%f,%f,%f\n",ray->dir[0],ray->dir[1],ray->dir[2]);
 			int index = x + (y*camera->getWidth());
-			pixelbuffer[index] = * castRay(ray, scene);
+			pixelbuffer[index] = castRay(ray, scene);
 		}
 	}
 
@@ -35,8 +37,8 @@ Vec3f* RayTracer::render(Camera* camera, Scene* scene, int nbounces){
 
 }
 
-Vec3f* RayTracer::castRay(Ray* ray, Scene* scene) {
-	return new Vec3f(1, 0 ,0);
+Vec3f RayTracer::castRay(Ray* ray, Scene* scene) {
+	return scene->intersectionColour(ray);
 }
 
 /**

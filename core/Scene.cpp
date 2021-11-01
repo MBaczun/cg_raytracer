@@ -20,19 +20,27 @@ void Scene::createScene(Value& scenespecs){
 
 	//iterate through shapes
 	std::cout<<"'scee_shapes' contains "<<scene_shapes.Size()<<" elements:"<<std::endl;
-	Shape* shapes[scene_shapes.Size()];
 	for (SizeType i = 0; i < scene_shapes.Size(); i++) {
 	        printf("scene_shapes[%d] = %s\n", i, scene_shapes[i].GetObject()["type"].GetString());
-			shapes[i] = Shape::createShape(scene_shapes[i]);
+			shapes.push_back(Shape::createShape(scene_shapes[i]));
 	}
 
 	//iterate through lightsources
 	std::cout<<"'scene_lightsources' contains "<<scene_lightsources.Size()<<" elements:"<<std::endl;
-	LightSource* lights[scene_lightsources.Size()];
 	for (SizeType i = 0; i < scene_lightsources.Size(); i++) {
 	        printf("scene_lightsources[%d] = %s\n", i, scene_lightsources[i].GetObject()["type"].GetString());
-			lights[i] = LightSource::createLightSource(scene_lightsources[i]);
+			lightSources.push_back(LightSource::createLightSource(scene_lightsources[i]));
 	}
+}
+
+Vec3f Scene::intersectionColour(Ray* ray) {
+	Hit h = shapes[0]->intersect(*ray);
+	if (h.hit) {
+		//printf("Hit\n");
+		return shapes[0]->diffuse();
+	}
+	//printf("Miss\n");
+	return Vec3f(0, 0 ,0);
 }
 
 
