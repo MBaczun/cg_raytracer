@@ -18,6 +18,9 @@ void Scene::createScene(Value& scenespecs){
 	Value& scene_shapes=scenespecs["shapes"];
 	Value& scene_lightsources=scenespecs["lightsources"];
 
+	//set background colour
+	background = Vec3f(scenespecs["backgroundcolor"][0].GetFloat(),scenespecs["backgroundcolor"][1].GetFloat(),scenespecs["backgroundcolor"][2].GetFloat());
+
 	//iterate through shapes
 	std::cout<<"'scee_shapes' contains "<<scene_shapes.Size()<<" elements:"<<std::endl;
 	for (SizeType i = 0; i < scene_shapes.Size(); i++) {
@@ -34,13 +37,18 @@ void Scene::createScene(Value& scenespecs){
 }
 
 Vec3f Scene::intersectionColour(Ray* ray) {
-	Hit h = shapes[0]->intersect(*ray);
-	if (h.hit) {
-		//printf("Hit\n");
-		return shapes[0]->diffuse();
+	Vec3f colour = background;
+	float best_t = INFINITY;
+	for (int i=0; i<shapes.size(); i++) {
+		Hit h = shapes[i]->intersect(*ray);
+		if (h.t < best_t) {
+			best_t = h.t;
+			colour = shapes[i]->diffuse();
+			//colour = Vec3f(h.t/8.0);//shapes[i]->diffuse();
+		}
+		
 	}
-	//printf("Miss\n");
-	return Vec3f(0, 0 ,0);
+	return colour;
 }
 
 

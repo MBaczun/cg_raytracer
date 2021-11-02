@@ -30,9 +30,12 @@ Sphere::~Sphere(){}
 		float b = 2.0 * oc.dotProduct(ray.dir);
 		float c = oc.dotProduct(oc) - radius*radius;
 		float discriminant = b*b - 4*a*c;
-		if (discriminant>0) h.hit = true;
-		else h.hit = false;
-
+		if (discriminant<0) {
+			h.t = INFINITY;
+		}
+		else {
+			h.t = -std::max((-b - sqrt(discriminant)) / (2.0*a), (-b + sqrt(discriminant)) / (2.0*a));
+		}
 		return h;
 
 	}
