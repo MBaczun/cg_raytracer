@@ -22,7 +22,7 @@ public:
 	// Constructors
 	//
 	Triangle();
-	Triangle(Vec3f v0, Vec3f v1, Vec3f v2, Vec3f diffuse): v0(v0), v1(v1), v2(v2), Shape(new Material(diffuse)){};
+	Triangle(Vec3f v0, Vec3f v1, Vec3f v2, Material* m): v0(v0), v1(v1), v2(v2), Shape(m){};
 
 	virtual ~Triangle() {};
 

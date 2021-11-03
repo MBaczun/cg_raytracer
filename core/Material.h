@@ -14,6 +14,7 @@ class Material{
 public:
     Material(){};
     Material(Vec3f dif):diffuse(dif){};
+    Material(Vec3f dif, float ks, float kd, float specular):diffuse(dif), ks(ks), kd(kd), specular(specular){};
 
     Vec3f getDiffuse(){
         return diffuse;
@@ -21,6 +22,9 @@ public:
 
 protected:
     Vec3f diffuse;
+    float ks;
+    float kd;
+    float specular;
 };
 
 

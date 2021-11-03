@@ -35,6 +35,8 @@ Sphere::~Sphere(){}
 		}
 		else {
 			h.t = -std::max((-b - sqrt(discriminant)) / (2.0*a), (-b + sqrt(discriminant)) / (2.0*a));
+			h.point = ray.origin + (-h.t)*(ray.dir);
+			h.norm = (h.point-center).normalize();
 		}
 		return h;
 

@@ -27,7 +27,7 @@ struct Ray{
 struct Hit{
 
 	Vec3f point; //point where ray hits a shape
-	//----------Hit variables to be filled------
+	Vec3f norm;
 	float t;
 
 };

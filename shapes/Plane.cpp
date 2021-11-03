@@ -36,7 +36,9 @@ Plane::Plane():Shape(){}
 
         if (x>=0 && x<= width.length() && y>=0 && y<=height.length()) {
             h.t = -dist;
-            //printf("success");
+            h.point = p;
+            if (ray.dir.dotProduct(normal)>0) h.norm = normal;
+            else h.norm = -normal;
         }
 
 		return h;

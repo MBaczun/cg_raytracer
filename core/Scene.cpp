@@ -2,6 +2,9 @@
  * Scene.cpp
  *
  */
+
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include "Scene.h"
 
 namespace rt{
@@ -39,16 +42,27 @@ void Scene::createScene(Value& scenespecs){
 Vec3f Scene::intersectionColour(Ray* ray) {
 	Vec3f colour = background;
 	float best_t = INFINITY;
+	Hit best_h;
 	for (int i=0; i<shapes.size(); i++) {
 		Hit h = shapes[i]->intersect(*ray);
 		if (h.t < best_t) {
 			best_t = h.t;
 			colour = shapes[i]->diffuse();
+			best_h = h;
 			//colour = Vec3f(h.t/8.0);//shapes[i]->diffuse();
 		}
-		
 	}
-	return colour;
+	if (best_t==INFINITY) return colour;
+
+	float albedo = 0.18;
+	float intensity = 1;
+	LightSource* light = lightSources[0];
+	Vec3f l = light->getPos();
+	//Vec3f shadedColour = albedo / M_PI * intensity * Vec3f(1) * std::max(0.f, best_h.norm.dotProduct(l-best_h.point));
+	//float d = (l-best_h.point).length();
+	Vec3f shadedColour = colour * std::max(0.f, best_h.norm.dotProduct((l-best_h.point).normalize()));
+
+	return shadedColour;
 }
 
 

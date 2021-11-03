@@ -8,7 +8,7 @@
 
 #include "core/RayHitStructs.h"
 #include "core/Material.h"
-
+#include <string>
 #include "rapidjson/document.h"
 
 using namespace rapidjson;
@@ -41,6 +41,8 @@ public:
 	}
 
 protected:
+
+	static Vec3f jsonToVec(Value& spec, std::string field);
 
 	Material * material;
 

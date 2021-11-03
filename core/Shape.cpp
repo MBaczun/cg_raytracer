@@ -23,43 +23,31 @@ Shape* Shape::createShape(Value& shapeSpecs){
 
 	std::string shapeType=shapeSpecs["type"].GetString();
 
-	Vec3f diffuse = Vec3f(shapeSpecs["material"]["diffusecolor"][0].GetFloat(),
-						  shapeSpecs["material"]["diffusecolor"][1].GetFloat(),
-						  shapeSpecs["material"]["diffusecolor"][2].GetFloat());
+	//material
+	Vec3f diffuse =	jsonToVec(shapeSpecs["material"], "diffusecolor");
+	float ks =	shapeSpecs["material"]["ks"].GetFloat();
+	float kd =	shapeSpecs["material"]["kd"].GetFloat();
+	float spec = shapeSpecs["material"]["specularexponent"].GetFloat();
+	Material* m = new Material(diffuse, ks, kd, spec);
+
 
 	if (shapeType.compare("sphere")==0){
-		Vec3f pos = Vec3f(shapeSpecs["center"][0].GetFloat(), 
-		                  shapeSpecs["center"][1].GetFloat(), 
-					      shapeSpecs["center"][2].GetFloat());
-		return new Sphere(pos, shapeSpecs["radius"].GetFloat(), diffuse);
+		Vec3f pos = jsonToVec(shapeSpecs, "center");
+		return new Sphere(pos, shapeSpecs["radius"].GetFloat(), m);
 
 	}
     else if (shapeType.compare("plane")==0){
-		Vec3f v0 = Vec3f(shapeSpecs["v0"][0].GetFloat(), 
-		                  shapeSpecs["v0"][1].GetFloat(), 
-					      shapeSpecs["v0"][2].GetFloat());
-		Vec3f v1 = Vec3f(shapeSpecs["v1"][0].GetFloat(), 
-		                  shapeSpecs["v1"][1].GetFloat(), 
-					      shapeSpecs["v1"][2].GetFloat());
-		Vec3f v2 = Vec3f(shapeSpecs["v2"][0].GetFloat(), 
-		                  shapeSpecs["v2"][1].GetFloat(), 
-					      shapeSpecs["v2"][2].GetFloat());
-		Vec3f v3 = Vec3f(shapeSpecs["v3"][0].GetFloat(), 
-		                  shapeSpecs["v3"][1].GetFloat(), 
-					      shapeSpecs["v3"][2].GetFloat());
-		return new Plane(v0, v1, v2, v3, diffuse);
+		Vec3f v0 = jsonToVec(shapeSpecs, "v0");
+		Vec3f v1 = jsonToVec(shapeSpecs, "v1");
+		Vec3f v2 = jsonToVec(shapeSpecs, "v2");
+		Vec3f v3 = jsonToVec(shapeSpecs, "v3");
+		return new Plane(v0, v1, v2, v3, m);
 	}
 	else if (shapeType.compare("triangle")==0){
-		Vec3f v0 = Vec3f(shapeSpecs["v0"][0].GetFloat(), 
-		                  shapeSpecs["v0"][1].GetFloat(), 
-					      shapeSpecs["v0"][2].GetFloat());
-		Vec3f v1 = Vec3f(shapeSpecs["v1"][0].GetFloat(), 
-		                  shapeSpecs["v1"][1].GetFloat(), 
-					      shapeSpecs["v1"][2].GetFloat());
-		Vec3f v2 = Vec3f(shapeSpecs["v2"][0].GetFloat(), 
-		                  shapeSpecs["v2"][1].GetFloat(), 
-					      shapeSpecs["v2"][2].GetFloat());
-		return new Triangle(v0, v1, v2, diffuse);
+		Vec3f v0 = jsonToVec(shapeSpecs, "v0");
+		Vec3f v1 = jsonToVec(shapeSpecs, "v1");
+		Vec3f v2 = jsonToVec(shapeSpecs, "v2");
+		return new Triangle(v0, v1, v2, m);
 	}
 
 
@@ -67,6 +55,11 @@ Shape* Shape::createShape(Value& shapeSpecs){
 
 }
 
+Vec3f Shape::jsonToVec(Value& spec, std::string field){
+	return Vec3f(spec[field.c_str()][0].GetFloat(),
+				 spec[field.c_str()][1].GetFloat(),
+				 spec[field.c_str()][2].GetFloat());
+}
 
 
 
