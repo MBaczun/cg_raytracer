@@ -166,6 +166,7 @@ CMakeFiles/raytracer.dir/core/Scene.cpp.o: ../parsers/rapidjson/msinttypes/stdin
 CMakeFiles/raytracer.dir/core/Scene.cpp.o: ../parsers/rapidjson/rapidjson.h
 CMakeFiles/raytracer.dir/core/Scene.cpp.o: ../parsers/rapidjson/reader.h
 CMakeFiles/raytracer.dir/core/Scene.cpp.o: ../parsers/rapidjson/stream.h
+CMakeFiles/raytracer.dir/core/Scene.cpp.o: ../shapes/Sphere.h
 CMakeFiles/raytracer.dir/core/Scene.cpp.o: ../core/Scene.cpp
 CMakeFiles/raytracer.dir/core/Scene.cpp.o: ../core/Scene.h
 

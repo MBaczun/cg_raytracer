@@ -6,5 +6,5 @@ CXX_FLAGS =
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/mnt/e/Docs/UNI/CG/cw2/cg_raytracer/build -I/mnt/e/Docs/UNI/CG/cw2/cg_raytracer -I/mnt/e/Docs/UNI/CG/cw2/cg_raytracer/parsers -I/mnt/e/Docs/UNI/CG/cw2/cg_raytracer/math 
+CXX_INCLUDES = -I/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/build -I/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer -I/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/parsers -I/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/math 
 

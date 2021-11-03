@@ -18,6 +18,9 @@ public:
     PointLight();
     PointLight(Vec3f pos, Vec3f is, Vec3f id):LightSource(pos),is(is),id(id){}
 
+    Vec3f getIs(){ return is;}
+    Vec3f getId(){ return id;}
+
 private:
 
 	Vec3f is;

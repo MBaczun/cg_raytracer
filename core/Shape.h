@@ -36,9 +36,10 @@ public:
 
 	static Shape* createShape(Value& cameraSpecs);
 
-	Vec3f diffuse() {
-		return material->getDiffuse();
-	}
+	float getKs(){ return material->getKs();}
+    float getKd(){ return material->getKd();}
+    float getSpec(){ return material->getSpec();}
+	Vec3f getDiffuse(){ return material->getDiffuse();}
 
 protected:
 

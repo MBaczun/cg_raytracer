@@ -25,8 +25,8 @@ CMakeFiles/raytracer.dir/cameras/Pinhole.cpp.o
  ../parsers/rapidjson/rapidjson.h
  ../parsers/rapidjson/reader.h
  ../parsers/rapidjson/stream.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/cameras/Pinhole.cpp
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/cameras/Pinhole.h
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/cameras/Pinhole.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/cameras/Pinhole.h
 CMakeFiles/raytracer.dir/cameras/ThinLens.cpp.o
  ../core/Camera.h
  ../core/RayHitStructs.h
@@ -51,8 +51,8 @@ CMakeFiles/raytracer.dir/cameras/ThinLens.cpp.o
  ../parsers/rapidjson/rapidjson.h
  ../parsers/rapidjson/reader.h
  ../parsers/rapidjson/stream.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/cameras/ThinLens.cpp
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/cameras/ThinLens.h
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/cameras/ThinLens.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/cameras/ThinLens.h
 CMakeFiles/raytracer.dir/core/Camera.cpp.o
  ../cameras/Pinhole.h
  ../cameras/ThinLens.h
@@ -79,8 +79,8 @@ CMakeFiles/raytracer.dir/core/Camera.cpp.o
  ../parsers/rapidjson/rapidjson.h
  ../parsers/rapidjson/reader.h
  ../parsers/rapidjson/stream.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/core/Camera.cpp
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/core/Camera.h
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/Camera.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/Camera.h
 CMakeFiles/raytracer.dir/core/LightSource.cpp.o
  ../core/LightSource.h
  ../lights/PointLight.h
@@ -105,12 +105,12 @@ CMakeFiles/raytracer.dir/core/LightSource.cpp.o
  ../parsers/rapidjson/rapidjson.h
  ../parsers/rapidjson/reader.h
  ../parsers/rapidjson/stream.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/core/LightSource.cpp
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/core/LightSource.h
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/LightSource.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/LightSource.h
 CMakeFiles/raytracer.dir/core/Material.cpp.o
  ../math/geometry.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/core/Material.cpp
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/core/Material.h
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/Material.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/Material.h
 CMakeFiles/raytracer.dir/core/RayTracer.cpp.o
  ../core/Camera.h
  ../core/LightSource.h
@@ -139,8 +139,8 @@ CMakeFiles/raytracer.dir/core/RayTracer.cpp.o
  ../parsers/rapidjson/rapidjson.h
  ../parsers/rapidjson/reader.h
  ../parsers/rapidjson/stream.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/core/RayTracer.cpp
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/core/RayTracer.h
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/RayTracer.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/RayTracer.h
 CMakeFiles/raytracer.dir/core/Scene.cpp.o
  ../core/LightSource.h
  ../core/Material.h
@@ -167,8 +167,9 @@ CMakeFiles/raytracer.dir/core/Scene.cpp.o
  ../parsers/rapidjson/rapidjson.h
  ../parsers/rapidjson/reader.h
  ../parsers/rapidjson/stream.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/core/Scene.cpp
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/core/Scene.h
+ ../shapes/Sphere.h
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/Scene.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/Scene.h
 CMakeFiles/raytracer.dir/core/Shape.cpp.o
  ../core/Material.h
  ../core/RayHitStructs.h
@@ -197,8 +198,8 @@ CMakeFiles/raytracer.dir/core/Shape.cpp.o
  ../shapes/Plane.h
  ../shapes/Sphere.h
  ../shapes/Triangle.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/core/Shape.cpp
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/core/Shape.h
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/Shape.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/Shape.h
 CMakeFiles/raytracer.dir/lights/AreaLight.cpp.o
  ../core/LightSource.h
  ../math/geometry.h
@@ -222,8 +223,8 @@ CMakeFiles/raytracer.dir/lights/AreaLight.cpp.o
  ../parsers/rapidjson/rapidjson.h
  ../parsers/rapidjson/reader.h
  ../parsers/rapidjson/stream.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/lights/AreaLight.cpp
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/lights/AreaLight.h
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/lights/AreaLight.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/lights/AreaLight.h
 CMakeFiles/raytracer.dir/lights/PointLight.cpp.o
  ../core/LightSource.h
  ../math/geometry.h
@@ -247,8 +248,8 @@ CMakeFiles/raytracer.dir/lights/PointLight.cpp.o
  ../parsers/rapidjson/rapidjson.h
  ../parsers/rapidjson/reader.h
  ../parsers/rapidjson/stream.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/lights/PointLight.cpp
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/lights/PointLight.h
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/lights/PointLight.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/lights/PointLight.h
 CMakeFiles/raytracer.dir/main/main.cpp.o
  ../core/Camera.h
  ../core/LightSource.h
@@ -280,12 +281,12 @@ CMakeFiles/raytracer.dir/main/main.cpp.o
  ../parsers/rapidjson/rapidjson.h
  ../parsers/rapidjson/reader.h
  ../parsers/rapidjson/stream.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/main/main.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/main/main.cpp
 CMakeFiles/raytracer.dir/materials/BlinnPhong.cpp.o
  ../core/Material.h
  ../math/geometry.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/materials/BlinnPhong.cpp
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/materials/BlinnPhong.h
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/materials/BlinnPhong.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/materials/BlinnPhong.h
 CMakeFiles/raytracer.dir/shapes/BVH.cpp.o
  ../core/Material.h
  ../core/RayHitStructs.h
@@ -311,8 +312,8 @@ CMakeFiles/raytracer.dir/shapes/BVH.cpp.o
  ../parsers/rapidjson/rapidjson.h
  ../parsers/rapidjson/reader.h
  ../parsers/rapidjson/stream.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/shapes/BVH.cpp
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/shapes/BVH.h
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/shapes/BVH.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/shapes/BVH.h
 CMakeFiles/raytracer.dir/shapes/Plane.cpp.o
  ../core/Material.h
  ../core/RayHitStructs.h
@@ -338,8 +339,8 @@ CMakeFiles/raytracer.dir/shapes/Plane.cpp.o
  ../parsers/rapidjson/rapidjson.h
  ../parsers/rapidjson/reader.h
  ../parsers/rapidjson/stream.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/shapes/Plane.cpp
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/shapes/Plane.h
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/shapes/Plane.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/shapes/Plane.h
 CMakeFiles/raytracer.dir/shapes/Sphere.cpp.o
  ../core/Material.h
  ../core/RayHitStructs.h
@@ -365,8 +366,8 @@ CMakeFiles/raytracer.dir/shapes/Sphere.cpp.o
  ../parsers/rapidjson/rapidjson.h
  ../parsers/rapidjson/reader.h
  ../parsers/rapidjson/stream.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/shapes/Sphere.cpp
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/shapes/Sphere.h
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/shapes/Sphere.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/shapes/Sphere.h
 CMakeFiles/raytracer.dir/shapes/TriMesh.cpp.o
  ../core/Material.h
  ../core/RayHitStructs.h
@@ -392,8 +393,8 @@ CMakeFiles/raytracer.dir/shapes/TriMesh.cpp.o
  ../parsers/rapidjson/rapidjson.h
  ../parsers/rapidjson/reader.h
  ../parsers/rapidjson/stream.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/shapes/TriMesh.cpp
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/shapes/TriMesh.h
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/shapes/TriMesh.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/shapes/TriMesh.h
 CMakeFiles/raytracer.dir/shapes/Triangle.cpp.o
  ../core/Material.h
  ../core/RayHitStructs.h
@@ -419,5 +420,5 @@ CMakeFiles/raytracer.dir/shapes/Triangle.cpp.o
  ../parsers/rapidjson/rapidjson.h
  ../parsers/rapidjson/reader.h
  ../parsers/rapidjson/stream.h
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/shapes/Triangle.cpp
- /mnt/e/Docs/UNI/CG/cw2/cg_raytracer/shapes/Triangle.h
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/shapes/Triangle.cpp
+ /mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/shapes/Triangle.h

@@ -3,6 +3,7 @@
  *
  */
 #include "RayTracer.h"
+#include <algorithm>
 #include <iostream>
 
 
@@ -50,8 +51,14 @@ Vec3f RayTracer::castRay(Ray* ray, Scene* scene) {
  */
 Vec3f* RayTracer::tonemap(Vec3f* pixelbuffer, int size){
 	//---------tonemapping function to be filled--------
+	//find max
+	float max = 0;
 	for (int i=0; i<size; i++) {
-		pixelbuffer[i] = pixelbuffer[i]*255;
+		max = std::max({max, pixelbuffer[i].x, pixelbuffer[i].y, pixelbuffer[i].z});
+	}
+	//normalize
+	for (int i=0; i<size; i++) {
+		pixelbuffer[i] = pixelbuffer[i]*(255.0/max);
 	}
 	return pixelbuffer;
 }

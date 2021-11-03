@@ -20,6 +20,10 @@ public:
         return diffuse;
     }
 
+    float getKs(){ return ks;}
+    float getKd(){ return kd;}
+    float getSpec(){ return specular;}
+
 protected:
     Vec3f diffuse;
     float ks;

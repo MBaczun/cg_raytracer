@@ -17,8 +17,8 @@ namespace rt{
 	Pinhole::Pinhole(int width, int height, int fov, Vec3f pos, Vec3f lookat, Vec3f up):Camera(width, height, fov, pos, lookat, up){
 		// to fill
 		Vec3f forward = (lookat).normalize(); 
-		Vec3f side = forward.crossProduct(up).normalize();
-		Vec3f normUp = -side.crossProduct(forward).normalize();
+		Vec3f side = -forward.crossProduct(up).normalize();
+		Vec3f normUp = side.crossProduct(forward).normalize();
 
 		this->camToWorld = new Matrix44f(side.x,    side.y,    side.z,    pos.x,
 		                                 normUp.x,  normUp.y,  normUp.z,  pos.y,

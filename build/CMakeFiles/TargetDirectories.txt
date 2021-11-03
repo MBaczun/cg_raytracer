@@ -1,5 +1,5 @@
-/mnt/e/Docs/UNI/CG/cw2/cg_raytracer/build/CMakeFiles/rebuild_cache.dir
-/mnt/e/Docs/UNI/CG/cw2/cg_raytracer/build/CMakeFiles/jsonexample.dir
-/mnt/e/Docs/UNI/CG/cw2/cg_raytracer/build/CMakeFiles/edit_cache.dir
-/mnt/e/Docs/UNI/CG/cw2/cg_raytracer/build/CMakeFiles/vectorexample.dir
-/mnt/e/Docs/UNI/CG/cw2/cg_raytracer/build/CMakeFiles/raytracer.dir
+/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/build/CMakeFiles/jsonexample.dir
+/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/build/CMakeFiles/vectorexample.dir
+/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/build/CMakeFiles/raytracer.dir

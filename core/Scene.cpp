@@ -7,6 +7,8 @@
 #include <cmath>
 #include "Scene.h"
 
+#include "shapes/Sphere.h"
+
 namespace rt{
 
 /**
@@ -40,29 +42,43 @@ void Scene::createScene(Value& scenespecs){
 }
 
 Vec3f Scene::intersectionColour(Ray* ray) {
-	Vec3f colour = background;
+	int best_shape = -1;
 	float best_t = INFINITY;
 	Hit best_h;
 	for (int i=0; i<shapes.size(); i++) {
 		Hit h = shapes[i]->intersect(*ray);
 		if (h.t < best_t) {
 			best_t = h.t;
-			colour = shapes[i]->diffuse();
+			best_shape = i;
 			best_h = h;
 			//colour = Vec3f(h.t/8.0);//shapes[i]->diffuse();
 		}
 	}
-	if (best_t==INFINITY) return colour;
+	if (best_t==INFINITY) return background;
 
-	float albedo = 0.18;
-	float intensity = 1;
+	//blinn phong shading
+	Vec3f intensity = Vec3f(0);
 	LightSource* light = lightSources[0];
+	Shape* shape = shapes[best_shape];
 	Vec3f l = light->getPos();
-	//Vec3f shadedColour = albedo / M_PI * intensity * Vec3f(1) * std::max(0.f, best_h.norm.dotProduct(l-best_h.point));
-	//float d = (l-best_h.point).length();
-	Vec3f shadedColour = colour * std::max(0.f, best_h.norm.dotProduct((l-best_h.point).normalize()));
+	Vec3f l_hat = (l-best_h.point).normalize();
+	Vec3f n_hat = best_h.norm;
+	Vec3f v = ray->origin-best_h.point;
+	Vec3f h = (l+v).normalize();
 
-	return shadedColour;
+	Vec3f is = light->getIs();
+	Vec3f id = light->getId();
+	float kd = shape->getKd();
+	float ks = shape->getKs();
+	float spec = shape->getSpec();
+	float distance = (l-best_h.point).length();
+	
+	Vec3f diffuse = kd * shape->getDiffuse() * std::max(0.f, n_hat.dotProduct(l_hat)) * id * (1/distance);
+	Vec3f specular = ks * pow((std::max(0.f, n_hat.dotProduct(h))),spec) * is * (1/distance);
+
+	intensity = intensity + diffuse + specular;
+
+	return intensity;
 }
 
 
