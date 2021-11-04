@@ -36,9 +36,9 @@ Triangle::Triangle():Shape(){}
         Vec3f cross3 = edge_c.crossProduct(p-v0); 
 
         if (cross1.dotProduct(normal) < 0 && cross2.dotProduct(normal) < 0 && cross3.dotProduct(normal) < 0  ) {
-            h.t = -dist;
+            h.t = dist;
             h.point = p;
-            if (ray.dir.dotProduct(normal)>0) h.norm = normal;
+            if (ray.dir.dotProduct(normal)<0) h.norm = normal;
             else h.norm = -normal;
         }
 

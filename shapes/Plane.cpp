@@ -23,6 +23,7 @@ Plane::Plane():Shape(){}
         if (ray.dir.dotProduct(normal)==0) return h;
         //otherwise calculate point of intersection:
         float dist = (v3-ray.origin).dotProduct(normal) / ray.dir.dotProduct(normal);
+        if (dist<0) return h;
         Vec3f p = ray.origin + dist*ray.dir;
 
         //validate that the point p is within bounds
@@ -35,9 +36,9 @@ Plane::Plane():Shape(){}
         //printf("p-v0: %f %f %f\n",(p-v0).x, (p-v0).y, (p-v0).z);
 
         if (x>=0 && x<= width.length() && y>=0 && y<=height.length()) {
-            h.t = -dist;
+            h.t = dist;
             h.point = p;
-            if (ray.dir.dotProduct(normal)>0) h.norm = normal;
+            if (ray.dir.dotProduct(normal)<0) h.norm = normal;
             else h.norm = -normal;
         }
 

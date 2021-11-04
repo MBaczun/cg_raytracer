@@ -28,7 +28,8 @@ Shape* Shape::createShape(Value& shapeSpecs){
 	float ks =	shapeSpecs["material"]["ks"].GetFloat();
 	float kd =	shapeSpecs["material"]["kd"].GetFloat();
 	float spec = shapeSpecs["material"]["specularexponent"].GetFloat();
-	Material* m = new Material(diffuse, ks, kd, spec);
+	float kr = shapeSpecs["material"].HasMember("kr") ? shapeSpecs["material"]["kr"].GetFloat() : 0;
+	Material* m = new Material(diffuse, ks, kd, spec, kr);
 
 
 	if (shapeType.compare("sphere")==0){

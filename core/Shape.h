@@ -40,6 +40,7 @@ public:
     float getKd(){ return material->getKd();}
     float getSpec(){ return material->getSpec();}
 	Vec3f getDiffuse(){ return material->getDiffuse();}
+	float getKr(){ return material->getKr();}
 
 protected:
 

@@ -42,12 +42,13 @@ void Scene::createScene(Value& scenespecs){
 }
 
 Vec3f Scene::intersectionColour(Ray* ray) {
+	//if (ray->raytype==SECONDARY) printf("reflect time\n");
 	int best_shape = -1;
 	float best_t = INFINITY;
 	Hit best_h;
 	for (int i=0; i<shapes.size(); i++) {
 		Hit h = shapes[i]->intersect(*ray);
-		if (h.t < best_t) {
+		if (h.t > 0 && h.t < best_t) {
 			best_t = h.t;
 			best_shape = i;
 			best_h = h;
@@ -58,27 +59,74 @@ Vec3f Scene::intersectionColour(Ray* ray) {
 
 	//blinn phong shading
 	Vec3f intensity = Vec3f(0);
-	LightSource* light = lightSources[0];
-	Shape* shape = shapes[best_shape];
-	Vec3f l = light->getPos();
-	Vec3f l_hat = (l-best_h.point).normalize();
-	Vec3f n_hat = best_h.norm;
-	Vec3f v = ray->origin-best_h.point;
-	Vec3f h = (l+v).normalize();
-
-	Vec3f is = light->getIs();
-	Vec3f id = light->getId();
-	float kd = shape->getKd();
-	float ks = shape->getKs();
-	float spec = shape->getSpec();
-	float distance = (l-best_h.point).length();
 	
-	Vec3f diffuse = kd * shape->getDiffuse() * std::max(0.f, n_hat.dotProduct(l_hat)) * id * (1/distance);
-	Vec3f specular = ks * pow((std::max(0.f, n_hat.dotProduct(h))),spec) * is * (1/distance);
+	LightSource* light = lightSources[0];
 
-	intensity = intensity + diffuse + specular;
+	Vec3f l = light->getPos();
+	Ray lightRay;
+	lightRay.origin = best_h.point + (1e-4)*best_h.norm;
+	lightRay.dir = (l-best_h.point).normalize();
 
+	// printf("%f ", intersects(lightRay).t);
+	// printf("%f\n", (l-best_h.point).length());
+	if (intersects(lightRay).t>=(l-best_h.point).length()) {
+	
+		Shape* shape = shapes[best_shape];
+		Vec3f l_hat = (l-best_h.point).normalize();
+		Vec3f n_hat = best_h.norm;
+		Vec3f v = ray->origin-best_h.point;
+		Vec3f h = (l+v).normalize();
+
+		Vec3f is = light->getIs();
+		Vec3f id = light->getId();
+		float kd = shape->getKd();
+		float ks = shape->getKs();
+		float kr = shape->getKr();
+		float spec = shape->getSpec();
+		float distance = (l-best_h.point).length();
+
+		//reflection
+		Vec3f reflectColour = Vec3f(0);
+		if (kr>0 && ray->raytype==PRIMARY) {
+			Ray* reflectRay = new Ray();
+			reflectRay->origin = lightRay.origin;
+			//d-2(d.n)n
+			reflectRay->dir = ray->dir - 2*(ray->dir.dotProduct(n_hat))*n_hat;
+			reflectRay->raytype = SECONDARY;
+		 	reflectColour = intersectionColour(reflectRay);
+		}		 
+		Vec3f diffuse = kd * shape->getDiffuse() * std::max(0.f, n_hat.dotProduct(l_hat)) * id * (1/distance);
+		Vec3f specular = ks * pow((std::max(0.f, n_hat.dotProduct(h))),spec) * is * (1/distance);
+
+		intensity = intensity + diffuse + specular + kr * reflectColour;
+	}
 	return intensity;
+}
+
+Hit Scene::intersects(Ray ray) {
+	Hit best_h;
+	best_h.t = INFINITY;
+	for (int i=0; i<shapes.size(); i++) {
+		Hit h = shapes[i]->intersect(ray);
+		// printf("shape %d, hit.t %f, hit.point %f %f %f\n", i, h.t, h.point.x, h.point.y, h.point.z);
+		// printf("normal: %f %f %f\n", h.norm.x, h.norm.y, h.norm.z);
+		if (h.t > 0 && h.t < best_h.t) {
+			best_h = h;
+		}
+	}
+	// printf("%f\n",best_h.t);
+	return best_h;
+}
+
+void Scene::test() {
+	printf("TEST\n\n");
+	
+	// Ray r;
+	// r.origin = Vec3f(0, 5.7, 1.15);
+	// r.dir = Vec3f(0, -1, 0);
+	// Hit h = intersects(r);
+	// printf("%f %f %f\n", h.point.x, h.point.y, h.point.z);
+	// printf("%f\n",h.t);
 }
 
 

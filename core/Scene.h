@@ -26,6 +26,9 @@ public:
 	void createScene(Value& scenespecs);
 
 	Vec3f intersectionColour(Ray* ray);
+	Hit intersects(Ray ray);
+
+	void test();
 
 
 private:

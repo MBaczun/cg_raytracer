@@ -6,29 +6,15 @@
 
 #IncludeRegexTransform: 
 
-../core/LightSource.h
-math/geometry.h
-../core/math/geometry.h
+../core/Camera.h
 rapidjson/document.h
 ../core/rapidjson/document.h
-
-../core/Material.h
-math/geometry.h
-../core/math/geometry.h
+core/RayHitStructs.h
+../core/core/RayHitStructs.h
 
 ../core/RayHitStructs.h
 math/geometry.h
 ../core/math/geometry.h
-
-../core/Shape.h
-core/RayHitStructs.h
-../core/core/RayHitStructs.h
-core/Material.h
-../core/core/Material.h
-string
--
-rapidjson/document.h
-../core/rapidjson/document.h
 
 ../math/geometry.h
 cstdlib
@@ -220,29 +206,15 @@ rapidjson.h
 encodings.h
 ../parsers/rapidjson/encodings.h
 
-../shapes/Sphere.h
+/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/cameras/Pinhole.cpp
+iostream
+-
+Pinhole.h
+/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/cameras/Pinhole.h
+
+/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/cameras/Pinhole.h
+core/Camera.h
+/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/cameras/core/Camera.h
 math/geometry.h
-../shapes/math/geometry.h
-core/RayHitStructs.h
-../shapes/core/RayHitStructs.h
-core/Shape.h
-../shapes/core/Shape.h
-
-/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/Scene.cpp
-cmath
--
-Scene.h
-/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/Scene.h
-shapes/Sphere.h
-/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/shapes/Sphere.h
-
-/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/Scene.h
-vector
--
-rapidjson/document.h
-/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/rapidjson/document.h
-core/LightSource.h
-/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/core/LightSource.h
-core/Shape.h
-/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/core/Shape.h
+/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/cameras/math/geometry.h
 

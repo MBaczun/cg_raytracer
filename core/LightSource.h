@@ -29,8 +29,8 @@ public:
         this->pos = v;
     }
 
-    virtual Vec3f getIs(){}
-    virtual Vec3f getId(){}
+    virtual Vec3f getIs(){return 0;};
+    virtual Vec3f getId(){return 0;};
 
 protected:
 
