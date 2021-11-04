@@ -36,6 +36,10 @@ public:
 
 	static Shape* createShape(Value& cameraSpecs);
 
+	virtual Vec2f textureCoordinates(Vec3f point)=0;
+	
+	Vec3f textureColour(Vec2f point){ return material->hasTexture() ? *material->getTexture(point) : material->getDiffuse();};
+
 	float getKs(){ return material->getKs();}
     float getKd(){ return material->getKd();}
     float getSpec(){ return material->getSpec();}

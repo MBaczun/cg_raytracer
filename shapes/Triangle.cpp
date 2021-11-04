@@ -47,6 +47,23 @@ Triangle::Triangle():Shape(){}
 	}
 
 
+    Vec2f Triangle::textureCoordinates(Vec3f point){
+        Vec3f base = v1-v0;
+        Vec3f secondary_edge = v2-v0;
+        
+        float base_length = base.length();
+        base = base.normalize();
+        float length = max(base_length,secondary_edge.dotProduct(base));
+        Vec3f vertical_component = (base.crossProduct(secondary_edge).normalize().crossProduct(base).normalize());
+        float height = secondary_edge.dotProduct(vertical_component);
+
+        float u = (point-v0).dotProduct(base) / base_length;
+        float v = (point-v0).dotProduct(vertical_component) / height;
+        //printf("u: %f, v: %f\n", u, v);
+        return Vec2f(u,v);
+    }
+
+
 
 
 } //namespace rt

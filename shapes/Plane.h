@@ -31,6 +31,8 @@ public:
 	//
 	Hit intersect(Ray ray);
 
+	Vec2f textureCoordinates(Vec3f point);
+
 private:
     Vec3f v0;
     Vec3f v1;

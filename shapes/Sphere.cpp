@@ -42,6 +42,14 @@ Sphere::~Sphere(){}
 
 	}
 
+	Vec2f Sphere::textureCoordinates(Vec3f point){
+		Vec3f d = (point-center).normalize();
+		float u = 0.5 + atan2(d.x, -d.y)/(2*M_PI);
+		float v = 0.5 - asin(d.z)/(M_PI);
+		//printf("u: %f, v: %f\n", u, v);
+		return Vec2f(u,v);
+	}
+
 
 
 } //namespace rt

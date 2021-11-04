@@ -46,6 +46,16 @@ Plane::Plane():Shape(){}
 
 	}
 
+    Vec2f Plane::textureCoordinates(Vec3f point){
+        Vec3f width = (v1-v0);
+        Vec3f height = (v3-v0);
+        Vec3f p = (point-v0);
+        float u = (p.dotProduct(width) / width.length())/width.length();
+        float v = (p.dotProduct(height) / height.length())/height.length();
+        //printf("u: %f, v: %f\n", u, v);
+        return(Vec2f(u,v));
+    }
+
 
 
 } //namespace rt

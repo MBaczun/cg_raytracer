@@ -95,8 +95,11 @@ Vec3f Scene::intersectionColour(Ray* ray) {
 			reflectRay->raytype = SECONDARY;
 		 	reflectColour = intersectionColour(reflectRay);
 		}		 
-		Vec3f diffuse = kd * shape->getDiffuse() * std::max(0.f, n_hat.dotProduct(l_hat)) * id * (1/distance);
-		Vec3f specular = ks * pow((std::max(0.f, n_hat.dotProduct(h))),spec) * is * (1/distance);
+
+		Vec3f baseColour = shape->textureColour(shape->textureCoordinates(best_h.point));
+		// printf("baseColour: %f %f %f\n", baseColour.x, baseColour.y, baseColour.z);
+		Vec3f diffuse = kd * baseColour * std::max(0.f, n_hat.dotProduct(l_hat)) * id * (1/(distance*distance));
+		Vec3f specular = ks * pow((std::max(0.f, n_hat.dotProduct(h))),spec) * is * (1/(distance*distance));
 
 		intensity = intensity + diffuse + specular + kr * reflectColour;
 	}
@@ -122,8 +125,8 @@ void Scene::test() {
 	printf("TEST\n\n");
 	
 	// Ray r;
-	// r.origin = Vec3f(0, 5.7, 1.15);
-	// r.dir = Vec3f(0, -1, 0);
+	// r.origin = Vec3f(1.5, 2.7, 0.15);
+	// r.dir = Vec3f(-1, 0, 0);
 	// Hit h = intersects(r);
 	// printf("%f %f %f\n", h.point.x, h.point.y, h.point.z);
 	// printf("%f\n",h.t);

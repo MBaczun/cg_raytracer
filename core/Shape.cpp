@@ -29,7 +29,15 @@ Shape* Shape::createShape(Value& shapeSpecs){
 	float kd =	shapeSpecs["material"]["kd"].GetFloat();
 	float spec = shapeSpecs["material"]["specularexponent"].GetFloat();
 	float kr = shapeSpecs["material"].HasMember("kr") ? shapeSpecs["material"]["kr"].GetFloat() : 0;
-	Material* m = new Material(diffuse, ks, kd, spec, kr);
+	Material* m;
+	if (shapeSpecs["material"].HasMember("tPath")) {
+		int tWidth = shapeSpecs["material"]["tWidth"].GetFloat();
+		int tHeight = shapeSpecs["material"]["tHeight"].GetFloat();
+		std::string path = shapeSpecs["material"]["tPath"].GetString();
+		m = new Material(diffuse, ks, kd, spec, kr, path, tWidth, tHeight);
+	} else {
+		m = new Material(diffuse, ks, kd, spec, kr);
+	}
 
 
 	if (shapeType.compare("sphere")==0){
