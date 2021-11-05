@@ -7,7 +7,7 @@
 #include "shapes/Sphere.h"
 #include "shapes/Plane.h"
 #include "shapes/Triangle.h"
-// #include "shapes/TriMesh.h"
+#include "shapes/TriMesh.h"
 // #include "shapes/BVH.h"
 
 namespace rt{
@@ -53,10 +53,24 @@ Shape* Shape::createShape(Value& shapeSpecs){
 		return new Plane(v0, v1, v2, v3, m);
 	}
 	else if (shapeType.compare("triangle")==0){
-		Vec3f v0 = jsonToVec(shapeSpecs, "v0");
-		Vec3f v1 = jsonToVec(shapeSpecs, "v1");
-		Vec3f v2 = jsonToVec(shapeSpecs, "v2");
+		Vec3f* v0 = new Vec3f(shapeSpecs["v0"][0].GetFloat(),
+					 		  shapeSpecs["v0"][1].GetFloat(),
+					          shapeSpecs["v0"][2].GetFloat());
+		Vec3f* v1 = new Vec3f(shapeSpecs["v1"][0].GetFloat(),
+					 		  shapeSpecs["v1"][1].GetFloat(),
+					          shapeSpecs["v1"][2].GetFloat());
+		Vec3f* v2 = new Vec3f(shapeSpecs["v2"][0].GetFloat(),
+					 		  shapeSpecs["v2"][1].GetFloat(),
+					          shapeSpecs["v2"][2].GetFloat());
 		return new Triangle(v0, v1, v2, m);
+	}
+	else if (shapeType.compare("trimesh")==0){
+		return new TriMesh(shapeSpecs["modelpath"].GetString(),
+						   jsonToVec(shapeSpecs, "pos"),
+						   shapeSpecs["scale"].GetFloat(),
+						   shapeSpecs["vs"].GetInt(),
+						   shapeSpecs["fs"].GetInt(),
+						   m);
 	}
 
 

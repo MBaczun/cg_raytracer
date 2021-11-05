@@ -22,7 +22,8 @@ public:
 	// Constructors
 	//
 	Triangle();
-	Triangle(Vec3f v0, Vec3f v1, Vec3f v2, Material* m): v0(v0), v1(v1), v2(v2), Shape(m){};
+	Triangle(Vec3f* v0, Vec3f* v1, Vec3f* v2): v0(v0), v1(v1), v2(v2){};
+	Triangle(Vec3f* v0, Vec3f* v1, Vec3f* v2, Material* m): v0(v0), v1(v1), v2(v2), Shape(m){};
 
 	virtual ~Triangle() {};
 
@@ -35,9 +36,9 @@ public:
 	Vec2f textureCoordinates(Vec3f point);
 
 private:
-    Vec3f v0;
-    Vec3f v1;
-    Vec3f v2;
+    Vec3f* v0;
+    Vec3f* v1;
+    Vec3f* v2;
 };
 
 

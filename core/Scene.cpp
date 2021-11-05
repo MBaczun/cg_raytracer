@@ -27,7 +27,7 @@ void Scene::createScene(Value& scenespecs){
 	background = Vec3f(scenespecs["backgroundcolor"][0].GetFloat(),scenespecs["backgroundcolor"][1].GetFloat(),scenespecs["backgroundcolor"][2].GetFloat());
 
 	//iterate through shapes
-	std::cout<<"'scee_shapes' contains "<<scene_shapes.Size()<<" elements:"<<std::endl;
+	std::cout<<"'scene_shapes' contains "<<scene_shapes.Size()<<" elements:"<<std::endl;
 	for (SizeType i = 0; i < scene_shapes.Size(); i++) {
 	        printf("scene_shapes[%d] = %s\n", i, scene_shapes[i].GetObject()["type"].GetString());
 			shapes.push_back(Shape::createShape(scene_shapes[i]));

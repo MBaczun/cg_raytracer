@@ -32,6 +32,7 @@ Vec3f* RayTracer::render(Camera* camera, Scene* scene, int nbounces){
 			int index = x + (y*camera->getWidth());
 			pixelbuffer[index] = castRay(ray, scene);
 		}
+		printf("%f percent done\n",((float)x/camera->getWidth())*100);
 	}
 
 	return pixelbuffer;
