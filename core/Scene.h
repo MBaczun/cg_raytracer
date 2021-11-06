@@ -32,6 +32,7 @@ public:
 
 
 private:
+	Shape* bvh;
 
 	std::vector<LightSource*> lightSources;
 	std::vector<Shape*> shapes;

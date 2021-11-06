@@ -31,12 +31,16 @@ public:
 
 	//
 	// Shape abstract methods (to be implemented by subclasses)
-	//
+	// 
 	virtual Hit intersect(Ray)=0;
 
 	static Shape* createShape(Value& cameraSpecs);
+	static Shape* bvhShape(std::vector<Shape*> s);
 
 	virtual Vec2f textureCoordinates(Vec3f point)=0;
+
+	virtual Vec3f getCorner()=0;
+	virtual Vec3f getWHD()=0;
 	
 	Vec3f textureColour(Vec2f point){ return material->hasTexture() ? *material->getTexture(point) : material->getDiffuse();};
 

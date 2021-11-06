@@ -20,6 +20,9 @@ namespace rt{
     }
 
     void TriMesh::populateVertices(std::string file) {
+        float minX, minY, minZ = INFINITY;
+        float maxX, maxY, maxZ = -INFINITY;
+
         std::string line;
         printf("Reading PLY model %s\n", file.c_str());
         ifstream MyReadFile(file.c_str());
@@ -48,7 +51,16 @@ namespace rt{
             getline (MyReadFile, line);
             Vec3f* vertex = getVectorFromLine(line, pos, scale);
             vertices.push_back(vertex);
+            maxX = std::max(maxX, vertex->x);
+            maxY = std::max(maxY, vertex->y);
+            maxZ = std::max(maxZ, vertex->z);
+            minX = std::min(minX, vertex->x);
+            minY = std::min(minY, vertex->y);
+            minZ = std::min(minZ, vertex->z);
         }
+        corner = Vec3f(minX, minY, minZ);
+        whd = Vec3f(maxX-minX, maxY-minY, maxZ-minZ);
+
         printf("Parsing faces...\n");
         // parse faces
         while (getline (MyReadFile, line)) {
@@ -88,7 +100,15 @@ namespace rt{
                 h = new_h;
             }
         }
+        h.shape = this;
         return h;
+    }
+
+    Vec3f TriMesh::getCorner(){
+        return corner;
+    }
+	Vec3f TriMesh::getWHD(){
+        return whd;
     }
 
 

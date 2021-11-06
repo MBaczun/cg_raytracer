@@ -8,7 +8,7 @@
 #include "shapes/Plane.h"
 #include "shapes/Triangle.h"
 #include "shapes/TriMesh.h"
-// #include "shapes/BVH.h"
+#include "shapes/BVH.h"
 
 namespace rt{
 
@@ -84,6 +84,9 @@ Vec3f Shape::jsonToVec(Value& spec, std::string field){
 				 spec[field.c_str()][2].GetFloat());
 }
 
+Shape* Shape::bvhShape(std::vector<Shape*> s) { 
+	return new BVH(s);
+}
 
 
 } //namespace rt

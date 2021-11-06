@@ -6,6 +6,7 @@
 #define CORE_RAYHITSTRUCTS_H_
 
 #include "math/geometry.h"
+//#include "core/Shape.h"
 
 namespace rt{
 
@@ -23,11 +24,12 @@ struct Ray{
 	Vec3f dir;
 };
 
-
+class Shape; //forward declaration
 struct Hit{
 
 	Vec3f point; //point where ray hits a shape
 	Vec3f norm;
+	Shape* shape;
 	float t;
 
 };

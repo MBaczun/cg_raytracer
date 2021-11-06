@@ -31,6 +31,10 @@ public:
     Hit intersect(Ray ray);
 
 	Vec2f textureCoordinates(Vec3f point) { return Vec2f(0.5);};
+
+    Vec3f getCorner();
+	Vec3f getWHD();
+
 private:
     void populateVertices(std::string);
     Vec3f* getVectorFromLine(std::string s, Vec3f pos, float scale);
@@ -41,6 +45,9 @@ private:
     int f_count;
     std::vector<Vec3f*> vertices;
     std::vector<Triangle*> faces;
+
+    Vec3f corner;
+	Vec3f whd;
 };
 
 

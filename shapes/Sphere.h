@@ -31,6 +31,9 @@ public:
 	Hit intersect(Ray ray);
 	Vec2f textureCoordinates(Vec3f point);
 
+	Vec3f getCorner();
+	Vec3f getWHD();
+
 private:
 
 	Vec3f center;

@@ -32,6 +32,9 @@ void Scene::createScene(Value& scenespecs){
 	        printf("scene_shapes[%d] = %s\n", i, scene_shapes[i].GetObject()["type"].GetString());
 			shapes.push_back(Shape::createShape(scene_shapes[i]));
 	}
+	printf("making bvh shape\n");
+	bvh = Shape::bvhShape(shapes);
+	printf("bvh shape made\n");
 
 	//iterate through lightsources
 	std::cout<<"'scene_lightsources' contains "<<scene_lightsources.Size()<<" elements:"<<std::endl;
@@ -42,19 +45,25 @@ void Scene::createScene(Value& scenespecs){
 }
 
 Vec3f Scene::intersectionColour(Ray* ray) {
-	//if (ray->raytype==SECONDARY) printf("reflect time\n");
+
 	int best_shape = -1;
 	float best_t = INFINITY;
 	Hit best_h;
-	for (int i=0; i<shapes.size(); i++) {
-		Hit h = shapes[i]->intersect(*ray);
-		if (h.t > 0 && h.t < best_t) {
-			best_t = h.t;
-			best_shape = i;
-			best_h = h;
-			//colour = Vec3f(h.t/8.0);//shapes[i]->diffuse();
-		}
-	}
+	// for (int i=0; i<shapes.size(); i++) {
+	// 	Hit h = shapes[i]->intersect(*ray);
+	// 	if (h.t > 0 && h.t < best_t) {
+	// 		best_t = h.t;
+	// 		best_shape = i;
+	// 		best_h = h;
+	// 		//colour = Vec3f(h.t/8.0);//shapes[i]->diffuse();
+	// 	}
+	// }
+	
+	//bvh 
+	//printf("bvh intersects\n");
+	best_h = bvh->intersect(*ray);
+	//printf("bvh intersection found\n");
+	best_t = best_h.t;
 	if (best_t==INFINITY) return background;
 
 	//blinn phong shading
@@ -71,7 +80,7 @@ Vec3f Scene::intersectionColour(Ray* ray) {
 	// printf("%f\n", (l-best_h.point).length());
 	if (intersects(lightRay).t>=(l-best_h.point).length()) {
 	
-		Shape* shape = shapes[best_shape];
+		Shape* shape = best_h.shape;
 		Vec3f l_hat = (l-best_h.point).normalize();
 		Vec3f n_hat = best_h.norm;
 		Vec3f v = ray->origin-best_h.point;

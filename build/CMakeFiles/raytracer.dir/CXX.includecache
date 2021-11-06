@@ -6,18 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../core/Camera.h
-rapidjson/document.h
-../core/rapidjson/document.h
-core/RayHitStructs.h
-../core/core/RayHitStructs.h
-
-../core/LightSource.h
-math/geometry.h
-../core/math/geometry.h
-rapidjson/document.h
-../core/rapidjson/document.h
-
 ../core/Material.h
 math/geometry.h
 ../core/math/geometry.h
@@ -31,16 +19,6 @@ fstream
 ../core/RayHitStructs.h
 math/geometry.h
 ../core/math/geometry.h
-
-../core/Scene.h
-vector
--
-rapidjson/document.h
-../core/rapidjson/document.h
-core/LightSource.h
-../core/core/LightSource.h
-core/Shape.h
-../core/core/Shape.h
 
 ../core/Shape.h
 core/RayHitStructs.h
@@ -242,19 +220,13 @@ rapidjson.h
 encodings.h
 ../parsers/rapidjson/encodings.h
 
-/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/RayTracer.cpp
-RayTracer.h
-/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/RayTracer.h
-algorithm
--
-iostream
--
+/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/shapes/BVH.cpp
+BVH.h
+/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/shapes/BVH.h
 
-/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/RayTracer.h
-math/geometry.h
-/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/math/geometry.h
-core/Camera.h
-/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/core/Camera.h
-core/Scene.h
-/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/core/core/Scene.h
+/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/shapes/BVH.h
+vector
+-
+core/Shape.h
+/mnt/c/Users/zedro/OneDrive/Documents/oldE/Docs/cg/cw2/raytracer_A2_CG2021/raytracer_A2_CG2021/RayTracer/shapes/core/Shape.h
 

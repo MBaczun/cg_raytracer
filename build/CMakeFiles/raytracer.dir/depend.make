@@ -194,6 +194,7 @@ CMakeFiles/raytracer.dir/core/Shape.cpp.o: ../parsers/rapidjson/msinttypes/stdin
 CMakeFiles/raytracer.dir/core/Shape.cpp.o: ../parsers/rapidjson/rapidjson.h
 CMakeFiles/raytracer.dir/core/Shape.cpp.o: ../parsers/rapidjson/reader.h
 CMakeFiles/raytracer.dir/core/Shape.cpp.o: ../parsers/rapidjson/stream.h
+CMakeFiles/raytracer.dir/core/Shape.cpp.o: ../shapes/BVH.h
 CMakeFiles/raytracer.dir/core/Shape.cpp.o: ../shapes/Plane.h
 CMakeFiles/raytracer.dir/core/Shape.cpp.o: ../shapes/Sphere.h
 CMakeFiles/raytracer.dir/core/Shape.cpp.o: ../shapes/TriMesh.h

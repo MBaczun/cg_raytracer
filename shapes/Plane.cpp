@@ -16,6 +16,7 @@ Plane::Plane():Shape(){}
 	Hit Plane::intersect(Ray ray){
 
 		Hit h;
+        h.shape = this;
         h.t = INFINITY;
 
         Vec3f normal = (v0-v1).crossProduct(v0-v2).normalize();
@@ -56,7 +57,23 @@ Plane::Plane():Shape(){}
         return(Vec2f(u,v));
     }
 
+    Vec3f Plane::getCorner(){
+        return corner;
+    }
+	Vec3f Plane::getWHD(){
+        return whd;
+    }
 
+    void Plane::setAABB() {
+        float x = std::min(std::min(v0.x,v1.x), std::min(v2.x, v3.x));
+        float y = std::min(std::min(v0.y,v1.y), std::min(v2.y, v3.y));
+        float z = std::min(std::min(v0.z,v1.z), std::min(v2.z, v3.z));
+        corner = Vec3f(x, y, z);
+        x = std::max(std::max(v0.x,v1.x), std::max(v2.x, v3.x));
+        y = std::max(std::max(v0.y,v1.y), std::max(v2.y, v3.y));
+        z = std::max(std::max(v0.z,v1.z), std::max(v2.z, v3.z));
+        whd = Vec3f(corner.x-x, corner.y-y, corner.z-z);
+    }
 
 } //namespace rt
 

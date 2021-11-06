@@ -24,6 +24,7 @@ Sphere::~Sphere(){}
 	Hit Sphere::intersect(Ray ray){
 
 		Hit h;
+		h.shape = this;
 		//-----------to be implemented -------------
 		Vec3f oc = ray.origin - center;
 		float a = ray.dir.dotProduct(ray.dir);
@@ -48,6 +49,13 @@ Sphere::~Sphere(){}
 		float v = 0.5 - asin(d.z)/(M_PI);
 		//printf("u: %f, v: %f\n", u, v);
 		return Vec2f(u,v);
+	}
+
+	Vec3f Sphere::getCorner() {
+		return (center-Vec3f(radius));
+	}
+	Vec3f Sphere::getWHD(){
+		return (Vec3f(radius*2));
 	}
 
 

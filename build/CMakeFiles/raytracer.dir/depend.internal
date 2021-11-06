@@ -195,6 +195,7 @@ CMakeFiles/raytracer.dir/core/Shape.cpp.o
  ../parsers/rapidjson/rapidjson.h
  ../parsers/rapidjson/reader.h
  ../parsers/rapidjson/stream.h
+ ../shapes/BVH.h
  ../shapes/Plane.h
  ../shapes/Sphere.h
  ../shapes/TriMesh.h

@@ -12,10 +12,10 @@ namespace rt{
 
 Triangle::Triangle():Shape(){}
 
-
 	Hit Triangle::intersect(Ray ray){
 
 		Hit h;
+        h.shape = this;
         h.t = INFINITY;
 
         Vec3f normal = (*v0-*v1).crossProduct(*v0-*v2).normalize();
@@ -63,7 +63,22 @@ Triangle::Triangle():Shape(){}
         return Vec2f(u,v);
     }
 
+    Vec3f Triangle::getCorner(){
+        return corner;
+    }
+	Vec3f Triangle::getWHD(){
+        return whd;
+    }
 
-
+    void Triangle::setAABB() {
+        float x = std::min(v0->x, std::min(v1->x, v2->x));
+        float y = std::min(v0->y, std::min(v1->y, v2->y));
+        float z = std::min(v0->z, std::min(v1->z, v2->z));
+        corner = Vec3f(x, y, z);
+        x = std::max(v0->x, std::max(v1->x, v2->x));
+        y = std::max(v0->y, std::max(v1->y, v2->y));
+        z = std::max(v0->z, std::max(v1->z, v2->z));
+        whd = Vec3f(corner.x-x, corner.y-y, corner.z-z);
+    }
 
 } //namespace rt
