@@ -10,11 +10,16 @@ namespace rt{
 
     BVH::BVH(std::vector<Shape*> shapes) {
         printf("bvh constructor. Shapes size %d\n", (int)shapes.size());
+        if (shapes.size()==0) { //hopefully this never happens
+            printf("Warning: Zero sized BVH occured\n");
+            return;
+        }
         if (shapes.size() == 1) {
             isLeaf = true;
-            shape = shapes[0];
+            shapeList.push_back(shapes[0]);
         }
         else {
+            isLeaf = false;
             //compute and store bouding information
             std::vector<AABB> all_boxes;
             Vec3f corner = Vec3f(INFINITY);
@@ -31,10 +36,10 @@ namespace rt{
 
                 all_boxes.push_back(box);
             }
-            //printf("far corner: %f %f %f\n", farCorner.x, farCorner.y, farCorner.z);
+            // printf("far corner: %f %f %f\n", farCorner.x, farCorner.y, farCorner.z);
             aabb.corner = corner;
             aabb.whd = farCorner-corner;
-            //printf("this BVH's AABB: corner %f %f %f, whd %f %f %f\n", aabb.corner.x, aabb.corner.y, aabb.corner.z, aabb.whd.x, aabb.whd.y, aabb.whd.z);
+            // printf("this BVH's AABB: corner %f %f %f, whd %f %f %f\n", aabb.corner.x, aabb.corner.y, aabb.corner.z, aabb.whd.x, aabb.whd.y, aabb.whd.z);
 
             //select split point
             splitAxis;
@@ -47,7 +52,7 @@ namespace rt{
             }
             splitPoint = aabb.corner[splitAxis] + aabb.whd[splitAxis]/2;
 
-            //printf("split axis: %d, split point: %f\n", splitAxis, splitPoint);
+            // printf("split axis: %d, split point: %f\n", splitAxis, splitPoint);
 
             //split shapes among child BVHs
             std::vector<Shape*> leftShapes;
@@ -61,9 +66,15 @@ namespace rt{
                     rightShapes.push_back(shapes[i]);
                 }
             }
-            printf("sending %d to left, %d to right BVH.\n", (int)leftShapes.size(), (int)rightShapes.size());
-            leftBVH = new BVH(leftShapes);
-            rightBVH = new BVH(rightShapes);
+            if (leftShapes.size()==0 || rightShapes.size()==0) {
+                isLeaf = true;
+                for (int i=0; i<shapes.size(); i++) {
+                    shapeList.push_back(shapes[i]);
+                }
+            } else {
+                leftBVH = new BVH(leftShapes);
+                rightBVH = new BVH(rightShapes);
+            }
 
         }
     }
@@ -78,7 +89,13 @@ namespace rt{
 
     Hit BVH::intersect(Ray ray) {
         if (isLeaf) {
-            return shape->intersect(ray);
+            Hit h;
+            h.t = INFINITY;
+            for (int i=0; i<shapeList.size(); i++) {
+            	Hit h2 = shapeList[i]->intersect(ray);
+            	if (h2.t > 0 && h2.t < h.t) h = h2;
+            }
+            return h;
         } else {
             Hit h;
             h.t = INFINITY;

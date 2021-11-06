@@ -72,7 +72,7 @@ Plane::Plane():Shape(){}
         x = std::max(std::max(v0.x,v1.x), std::max(v2.x, v3.x));
         y = std::max(std::max(v0.y,v1.y), std::max(v2.y, v3.y));
         z = std::max(std::max(v0.z,v1.z), std::max(v2.z, v3.z));
-        whd = Vec3f(corner.x-x, corner.y-y, corner.z-z);
+        whd = Vec3f(x-corner.x, y-corner.y, z-corner.z);
     }
 
 } //namespace rt

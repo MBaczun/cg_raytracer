@@ -8,6 +8,7 @@
 #include "Scene.h"
 
 #include "shapes/Sphere.h"
+#include "shapes/BVH.h"
 
 namespace rt{
 
@@ -34,7 +35,6 @@ void Scene::createScene(Value& scenespecs){
 	}
 	printf("making bvh shape\n");
 	bvh = Shape::bvhShape(shapes);
-	printf("bvh shape made\n");
 
 	//iterate through lightsources
 	std::cout<<"'scene_lightsources' contains "<<scene_lightsources.Size()<<" elements:"<<std::endl;
@@ -60,9 +60,7 @@ Vec3f Scene::intersectionColour(Ray* ray) {
 	// }
 	
 	//bvh 
-	//printf("bvh intersects\n");
 	best_h = bvh->intersect(*ray);
-	//printf("bvh intersection found\n");
 	best_t = best_h.t;
 	if (best_t==INFINITY) return background;
 

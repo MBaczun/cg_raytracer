@@ -13,6 +13,7 @@
 #include "core/RayHitStructs.h"
 #include "core/Shape.h"
 #include "shapes/Triangle.h"
+#include "shapes/BVH.h"
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -44,7 +45,7 @@ private:
     int v_count;
     int f_count;
     std::vector<Vec3f*> vertices;
-    std::vector<Triangle*> faces;
+    BVH* bvh;
 
     Vec3f corner;
 	Vec3f whd;

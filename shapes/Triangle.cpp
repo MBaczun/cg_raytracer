@@ -78,7 +78,7 @@ Triangle::Triangle():Shape(){}
         x = std::max(v0->x, std::max(v1->x, v2->x));
         y = std::max(v0->y, std::max(v1->y, v2->y));
         z = std::max(v0->z, std::max(v1->z, v2->z));
-        whd = Vec3f(corner.x-x, corner.y-y, corner.z-z);
+        whd = Vec3f(x-corner.x, y-corner.y, z-corner.z);
     }
 
 } //namespace rt

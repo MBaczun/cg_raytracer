@@ -32,18 +32,6 @@ namespace rt{
         while (!(line.compare("end_header")==0)) {
             getline (MyReadFile, line);
         }
-        // cout << line << "\n";
-        // printf("%d\n", (line=="end_header"));
-        // printf("%d\n", line.compare("end_header"));
-        // printf("%d\n", line.c_str()=="end_header");
-        // printf("%d\n", strcmp(line.c_str(), "end_header"));
-
-        if (line.compare("end_header")==0) {
-            printf("true\n");
-        }
-
-        // printf("%d\n",(10/0));
-
         
         printf("Parsing vertices...\n");
         // parse vertices
@@ -63,12 +51,13 @@ namespace rt{
 
         printf("Parsing faces...\n");
         // parse faces
+        std::vector<Shape*> faces;
         while (getline (MyReadFile, line)) {
             Vec3f* corners = getVectorFromLine(line, Vec3f(0), 1);
             Triangle* triangle = new Triangle(vertices[corners->x],vertices[corners->y], vertices[corners->z]);
             faces.push_back(triangle);
         }
-
+        bvh = new BVH(faces);
 
         MyReadFile.close();
     }
@@ -92,14 +81,7 @@ namespace rt{
     }
 
     Hit TriMesh::intersect(Ray ray) {
-        Hit h;
-        h.t = INFINITY;
-        for(int i=0; i<faces.size(); i++) {
-            Hit new_h = faces[i]->intersect(ray);
-            if (new_h.t>0 && new_h.t<h.t){
-                h = new_h;
-            }
-        }
+        Hit h = bvh->intersect(ray);
         h.shape = this;
         return h;
     }

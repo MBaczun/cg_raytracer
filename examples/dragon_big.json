@@ -37,14 +37,15 @@
     {
         "id": "dragon",
         "type":"trimesh",
-        "modelpath":"../models/dragon_recon/dragon_vrip_res4.ply",
+        "modelpath":"../models/dragon_recon/dragon_vrip.ply",
         "pos": [0, 2.7, 1],
-        "scale":1,
-        "vs":5205,
-        "fs":11102,
+        "scale":15,
+        "vs":437645,
+        "fs":871414,
         "material":{
             "ks":0.4,
             "kd":0.8,
+            "kr":0.5,
             "specularexponent":40,
             "diffusecolor":[0.8, 0.6, 0.4]
         }

@@ -40,7 +40,8 @@ private:
     BVH* rightBVH;
     int splitAxis;
     float splitPoint;
-    Shape* shape;
+    
+    std::vector<Shape*> shapeList;
 
     AABB aabb;
 
