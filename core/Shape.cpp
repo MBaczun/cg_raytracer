@@ -65,12 +65,29 @@ Shape* Shape::createShape(Value& shapeSpecs){
 		return new Triangle(v0, v1, v2, m);
 	}
 	else if (shapeType.compare("trimesh")==0){
-		return new TriMesh(shapeSpecs["modelpath"].GetString(),
+		if (shapeSpecs.HasMember("r1")) {
+			Vec3f r1 = jsonToVec(shapeSpecs, "r1");
+			Vec3f r2 = jsonToVec(shapeSpecs, "r2");
+			Vec3f r3 = jsonToVec(shapeSpecs, "r3");
+			Matrix44f rotation = Matrix44f(r1.x, r1.y, r1.z, 0,
+			             	               r2.x, r2.y, r2.z, 0,
+								           r3.x, r3.y, r3.z, 0,
+							    	       0,    0,    0,    1);
+			return new TriMesh(shapeSpecs["modelpath"].GetString(),
+						   jsonToVec(shapeSpecs, "pos"),
+						   shapeSpecs["scale"].GetFloat(),
+						   shapeSpecs["vs"].GetInt(),
+						   shapeSpecs["fs"].GetInt(),
+						   rotation,
+						   m);
+		} else {
+			return new TriMesh(shapeSpecs["modelpath"].GetString(),
 						   jsonToVec(shapeSpecs, "pos"),
 						   shapeSpecs["scale"].GetFloat(),
 						   shapeSpecs["vs"].GetInt(),
 						   shapeSpecs["fs"].GetInt(),
 						   m);
+		}
 	}
 
 

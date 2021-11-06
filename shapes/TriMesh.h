@@ -26,6 +26,7 @@ class TriMesh: public Shape{
 public:
     TriMesh();
     TriMesh(std::string ply_file, Vec3f pos, float scale, int v_count, int f_count, Material* m);
+    TriMesh(std::string ply_file, Vec3f pos, float scale, int v_count, int f_count, Matrix44f rot, Material* m);
 
     virtual ~TriMesh();
 
@@ -38,12 +39,13 @@ public:
 
 private:
     void populateVertices(std::string);
-    Vec3f* getVectorFromLine(std::string s, Vec3f pos, float scale);
+    Vec3f* getVectorFromLine(std::string s, Vec3f pos, float scale, bool rotate);
 
     Vec3f pos;
     float scale;
     int v_count;
     int f_count;
+    Matrix44f rot;
     std::vector<Vec3f*> vertices;
     BVH* bvh;
 

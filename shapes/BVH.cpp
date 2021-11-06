@@ -9,7 +9,6 @@
 namespace rt{
 
     BVH::BVH(std::vector<Shape*> shapes) {
-        printf("bvh constructor. Shapes size %d\n", (int)shapes.size());
         if (shapes.size()==0) { //hopefully this never happens
             printf("Warning: Zero sized BVH occured\n");
             return;

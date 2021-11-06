@@ -21,27 +21,16 @@
     ],
     "shapes":[
     {
-        "type":"sphere",
-        "center": [0.0, 2.7, 0.15],
-        "radius":0.5,
-        "material":{
-            "ks":0.4,
-            "kd":0.8,
-            "specularexponent":3,
-            "diffusecolor":[0.4, 0.3, 0.4],
-            "tPath": "../textures/sky-map.ppm",
-            "tWidth": 852,
-            "tHeight": 480
-        }
-    },
-    {
         "id": "dragon",
         "type":"trimesh",
         "modelpath":"../models/dragon_recon/dragon_vrip_res4.ply",
-        "pos": [0, 2.7, 1],
+        "pos": [0, 2.7, -0.5],
         "scale":15,
         "vs":5205,
         "fs":11102,
+        "r1": [1, 0, 0],
+        "r2": [0, 0, 1],
+        "r3": [0, -1, 0],
         "material":{
             "ks":0.4,
             "kd":0.8,

@@ -11,11 +11,14 @@ namespace rt{
     TriMesh::TriMesh():Shape(){}
     TriMesh::~TriMesh(){}
 
-    TriMesh::TriMesh(std::string ply_file, Vec3f pos, float scale, int vs, int fs, Material* m):Shape(m) {
+    TriMesh::TriMesh(std::string ply_file, Vec3f pos, float scale, int v_count, int f_count, Material* m): 
+        TriMesh(ply_file, pos, scale, v_count, f_count, Matrix44f(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1), m) {};
+    TriMesh::TriMesh(std::string ply_file, Vec3f pos, float scale, int vs, int fs, Matrix44f rot, Material* m):Shape(m) {
         this->pos = pos;
         this->scale = scale;
         this->v_count = vs;
         this->f_count = fs;
+        this->rot = rot;
         this->populateVertices(ply_file);
     }
 
@@ -37,7 +40,7 @@ namespace rt{
         // parse vertices
         for (int i=0; i<v_count; i++) {
             getline (MyReadFile, line);
-            Vec3f* vertex = getVectorFromLine(line, pos, scale);
+            Vec3f* vertex = getVectorFromLine(line, pos, scale, true);
             vertices.push_back(vertex);
             maxX = std::max(maxX, vertex->x);
             maxY = std::max(maxY, vertex->y);
@@ -53,7 +56,7 @@ namespace rt{
         // parse faces
         std::vector<Shape*> faces;
         while (getline (MyReadFile, line)) {
-            Vec3f* corners = getVectorFromLine(line, Vec3f(0), 1);
+            Vec3f* corners = getVectorFromLine(line, Vec3f(0), 1, false);
             Triangle* triangle = new Triangle(vertices[corners->x],vertices[corners->y], vertices[corners->z]);
             faces.push_back(triangle);
         }
@@ -62,7 +65,7 @@ namespace rt{
         MyReadFile.close();
     }
 
-    Vec3f* TriMesh::getVectorFromLine(std::string s, Vec3f pos, float scale) {
+    Vec3f* TriMesh::getVectorFromLine(std::string s, Vec3f pos, float scale, bool rotate) {
         vector<string> words{};
         int index = 0;
         while ((index = s.find(" ")) != string::npos) {
@@ -70,13 +73,13 @@ namespace rt{
             s.erase(0, index + 1);
         }
         int l = words.size();
-        Vec3f* v = new Vec3f(atof(words[l-3].c_str())*scale+pos.x, atof(words[l-2].c_str())*scale+pos.y, atof(words[l-1].c_str())*scale+pos.z);
-        // printf("%f", atoi(words[l-2].c_str()));
-        // printf("%f", scale);
-        // printf("%f", pos.y);
-        // printf("%f", atoi(words[l-2].c_str())*scale+pos.y);
-        printf("v: %f %f %f\n",v->x, v->y, v->z);
-        // int a = 10 / 0;
+        Vec3f point = Vec3f(atof(words[l-3].c_str())*scale, atof(words[l-2].c_str())*scale, atof(words[l-1].c_str())*scale);
+        if (rotate) {
+            // printf("point %f %f %f\n", point.x, point.y, point.z);
+            rot.multVecMatrix(point, point);
+            // printf("rotated: %f %f %f\n", point.x, point.y, point.z);
+        }
+        Vec3f* v = new Vec3f(point.x+pos.x, point.y+pos.y, point.z+pos.z);
         return v;
     }
 
