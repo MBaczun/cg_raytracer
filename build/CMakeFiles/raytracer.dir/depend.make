@@ -82,6 +82,7 @@ CMakeFiles/raytracer.dir/core/Camera.cpp.o: ../core/Camera.cpp
 CMakeFiles/raytracer.dir/core/Camera.cpp.o: ../core/Camera.h
 
 CMakeFiles/raytracer.dir/core/LightSource.cpp.o: ../core/LightSource.h
+CMakeFiles/raytracer.dir/core/LightSource.cpp.o: ../lights/AreaLight.h
 CMakeFiles/raytracer.dir/core/LightSource.cpp.o: ../lights/PointLight.h
 CMakeFiles/raytracer.dir/core/LightSource.cpp.o: ../math/geometry.h
 CMakeFiles/raytracer.dir/core/LightSource.cpp.o: ../parsers/rapidjson/allocators.h
@@ -166,8 +167,6 @@ CMakeFiles/raytracer.dir/core/Scene.cpp.o: ../parsers/rapidjson/msinttypes/stdin
 CMakeFiles/raytracer.dir/core/Scene.cpp.o: ../parsers/rapidjson/rapidjson.h
 CMakeFiles/raytracer.dir/core/Scene.cpp.o: ../parsers/rapidjson/reader.h
 CMakeFiles/raytracer.dir/core/Scene.cpp.o: ../parsers/rapidjson/stream.h
-CMakeFiles/raytracer.dir/core/Scene.cpp.o: ../shapes/BVH.h
-CMakeFiles/raytracer.dir/core/Scene.cpp.o: ../shapes/Sphere.h
 CMakeFiles/raytracer.dir/core/Scene.cpp.o: ../core/Scene.cpp
 CMakeFiles/raytracer.dir/core/Scene.cpp.o: ../core/Scene.h
 

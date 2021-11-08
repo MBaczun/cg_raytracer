@@ -19,7 +19,7 @@ namespace rt{
  *
  * @return a pixel buffer containing pixel values in linear RGB format
  */
-Vec3f* RayTracer::render(Camera* camera, Scene* scene, int nbounces){
+Vec3f* RayTracer::render(Camera* camera, Scene* scene, int nbounces, int spp){
 
 	Vec3f* pixelbuffer=new Vec3f[camera->getWidth()*camera->getHeight()];
 
@@ -30,7 +30,7 @@ Vec3f* RayTracer::render(Camera* camera, Scene* scene, int nbounces){
 			Ray* ray = camera->rasterToRay(x, y);
 			//printf("%f,%f,%f\n",ray->dir[0],ray->dir[1],ray->dir[2]);
 			int index = x + (y*camera->getWidth());
-			pixelbuffer[index] = castRay(ray, scene);
+			pixelbuffer[index] = castRay(ray, scene, spp);
 		}
 		printf("%f percent done\n",100*((float)x/camera->getHeight()));
 	}
@@ -39,8 +39,8 @@ Vec3f* RayTracer::render(Camera* camera, Scene* scene, int nbounces){
 
 }
 
-Vec3f RayTracer::castRay(Ray* ray, Scene* scene) {
-	return scene->intersectionColour(ray);
+Vec3f RayTracer::castRay(Ray* ray, Scene* scene, int spp) {
+	return scene->intersectionColour(ray, spp);
 }
 
 /**

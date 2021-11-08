@@ -1,5 +1,6 @@
 {
 "nbounces":3,
+"spp":100,
 "camera":{
     "type":"pinhole",
     "width":800,
@@ -12,43 +13,36 @@
 "scene":{
     "backgroundcolor":[0.01, 0.01, 0.01],
     "lightsources": [
-        {
-            "type": "pointlight",
-            "position": [-1.0, 1.0, 1.5],
-            "is": [100.0, 100.0, 100.0],
-            "id": [100.0, 50.0, 50.0]
-        },
-        {
-            "type": "pointlight",
-            "position": [1.0, 1.0, 1.5],
-            "is": [100.0, 100.0, 100.0],
-            "id": [50.0, 50.0, 100.0]
-        },
-        {
-            "type": "pointlight",
-            "position": [0.0, 1.0, 4.0],
-            "is": [100.0, 100.0, 100.0],
-            "id": [50.0, 100.0, 50.0]
-        }
+    {
+        "type": "arealight",
+        "c1": [-2, 0, 8],
+        "c2": [2, 0, 8],
+        "c3": [2, 8, 8],
+        "is": [100.0, 100.0, 100.0],
+        "id": [100.0, 50.0, 50.0]
+    }
     ],
     "shapes":[
     {
-        "id": "dragon",
-        "type":"trimesh",
-        "modelpath":"../models/dragon_recon/dragon_vrip.ply",
-        "pos": [0, 2.7, -0.5],
-        "scale":15,
-        "vs":437645,
-        "fs":871414,
-        "r1": [1, 0, 0],
-        "r2": [0, 0, 1],
-        "r3": [0, -1, 0],
+        "type":"sphere",
+        "center": [-1.0, 4, 0.7],
+        "radius":0.5,
         "material":{
             "ks":0.4,
             "kd":0.8,
-            "kr":0.5,
-            "specularexponent":40,
-            "diffusecolor":[0.8, 0.6, 0.4]
+            "specularexponent":3,
+            "diffusecolor":[0.3, 0.9, 0.4]
+        }
+    },
+    {
+        "type":"sphere",
+        "center": [1.0, 2.7, 0.7],
+        "radius":0.5,
+        "material":{
+            "ks":0.4,
+            "kd":0.8,
+            "specularexponent":3,
+            "diffusecolor":[0.9, 0.5, 0.4]
         }
     },
     {

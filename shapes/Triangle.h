@@ -18,19 +18,12 @@ class Triangle: public Shape{
 
 public:
 
-	//
-	// Constructors
-	//
 	Triangle();
 	Triangle(Vec3f* v0, Vec3f* v1, Vec3f* v2): v0(v0), v1(v1), v2(v2){ setAABB(); };
 	Triangle(Vec3f* v0, Vec3f* v1, Vec3f* v2, Material* m): v0(v0), v1(v1), v2(v2), Shape(m){ setAABB(); };
 
 	virtual ~Triangle() {};
 
-
-	//
-	// Functions that need to be implemented, since Sphere is a subclass of Shape
-	//
 	Hit intersect(Ray ray);
 
 	Vec2f textureCoordinates(Vec3f point);

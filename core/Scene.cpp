@@ -7,9 +7,6 @@
 #include <cmath>
 #include "Scene.h"
 
-#include "shapes/Sphere.h"
-#include "shapes/BVH.h"
-
 namespace rt{
 
 /**
@@ -44,72 +41,68 @@ void Scene::createScene(Value& scenespecs){
 	}
 }
 
-Vec3f Scene::intersectionColour(Ray* ray) {
+Vec3f Scene::intersectionColour(Ray* ray, int spp) {
 
-	int best_shape = -1;
-	float best_t = INFINITY;
-	Hit best_h;
-	// for (int i=0; i<shapes.size(); i++) {
-	// 	Hit h = shapes[i]->intersect(*ray);
-	// 	if (h.t > 0 && h.t < best_t) {
-	// 		best_t = h.t;
-	// 		best_shape = i;
-	// 		best_h = h;
-	// 		//colour = Vec3f(h.t/8.0);//shapes[i]->diffuse();
-	// 	}
-	// }
+	Hit	hit = bvh->intersect(*ray);
 	
-	//bvh 
-	best_h = bvh->intersect(*ray);
-	best_t = best_h.t;
-	if (best_t==INFINITY) return background;
+	if (hit.t==INFINITY) return background;
 
 	//blinn phong shading
 	Vec3f intensity = Vec3f(0);
+	Shape* shape = hit.shape;
 	
-	LightSource* light = lightSources[0];
-
-	Vec3f l = light->getPos();
-	Ray lightRay;
-	lightRay.origin = best_h.point + (1e-4)*best_h.norm;
-	lightRay.dir = (l-best_h.point).normalize();
-
-	// printf("%f ", intersects(lightRay).t);
-	// printf("%f\n", (l-best_h.point).length());
-	if (intersects(lightRay).t>=(l-best_h.point).length()) {
+	float kd = shape->getKd();
+	float ks = shape->getKs();
+	float kr = shape->getKr();
+	float spec = shape->getSpec();
+	Vec3f n_hat = hit.norm;
 	
-		Shape* shape = best_h.shape;
-		Vec3f l_hat = (l-best_h.point).normalize();
-		Vec3f n_hat = best_h.norm;
-		Vec3f v = ray->origin-best_h.point;
-		Vec3f h = (l+v).normalize();
-
+	for (int lightNumber=0; lightNumber<lightSources.size(); lightNumber++) {
+		LightSource* light = lightSources[lightNumber];
+		Vec3f l = light->getPos();
 		Vec3f is = light->getIs();
 		Vec3f id = light->getId();
-		float kd = shape->getKd();
-		float ks = shape->getKs();
-		float kr = shape->getKr();
-		float spec = shape->getSpec();
-		float distance = (l-best_h.point).length();
+		Vec3f l_hat = (l-hit.point).normalize();
+		Vec3f v = ray->origin-hit.point;
+		Vec3f h = (l+v).normalize();
+		float distance = (l-hit.point).length();
 
-		//reflection
-		Vec3f reflectColour = Vec3f(0);
-		if (kr>0 && ray->raytype==PRIMARY) {
-			Ray* reflectRay = new Ray();
-			reflectRay->origin = lightRay.origin;
-			//d-2(d.n)n
-			reflectRay->dir = ray->dir - 2*(ray->dir.dotProduct(n_hat))*n_hat;
-			reflectRay->raytype = SECONDARY;
-		 	reflectColour = intersectionColour(reflectRay);
-		}		 
+		//calculate visibility term
+		float visibility = 0;
+		Ray lightRay;
+		for (int v=0; v<spp; v++) {
+			lightRay.origin = hit.point + (1e-4)*hit.norm;
+			Vec3f samplePoint = light->getSamplePoint();
+			//printf("Sample point %f %f %f",samplePoint.x, samplePoint.y, samplePoint.z);
+			lightRay.dir = (samplePoint-hit.point).normalize();
+			if (intersects(lightRay).t>=(l-hit.point).length()) visibility = visibility + 1;
+		}
+		visibility = visibility / spp;
 
-		Vec3f baseColour = shape->textureColour(shape->textureCoordinates(best_h.point));
-		// printf("baseColour: %f %f %f\n", baseColour.x, baseColour.y, baseColour.z);
-		Vec3f diffuse = kd * baseColour * std::max(0.f, n_hat.dotProduct(l_hat)) * id * (1/(distance*distance));
-		Vec3f specular = ks * pow((std::max(0.f, n_hat.dotProduct(h))),spec) * is * (1/(distance*distance));
+		//printf("visibility: %f\n", visibility);
 
-		intensity = intensity + diffuse + specular + kr * reflectColour;
+		//check that we're not in shadow of this light
+		if (visibility > 0) {
+		
+			Vec3f baseColour = shape->textureColour(shape->textureCoordinates(hit.point));
+			Vec3f diffuse = kd * baseColour * std::max(0.f, n_hat.dotProduct(l_hat)) * id * (1/(distance*distance));
+			Vec3f specular = ks * pow((std::max(0.f, n_hat.dotProduct(h))),spec) * is * (1/(distance*distance));
+
+			intensity = intensity + visibility * (diffuse + specular);
+		}
 	}
+
+	//reflection
+	Vec3f reflectColour = Vec3f(0);
+	if (kr>0 && ray->raytype==PRIMARY) {
+		Ray* reflectRay = new Ray();
+		reflectRay->origin = hit.point + (1e-4)*hit.norm;
+		reflectRay->dir = ray->dir - 2*(ray->dir.dotProduct(n_hat))*n_hat;
+		reflectRay->raytype = SECONDARY;
+		reflectColour = intersectionColour(reflectRay, spp);
+	}
+	intensity = intensity + kr * reflectColour;
+
 	return intensity;
 }
 
@@ -118,26 +111,14 @@ Hit Scene::intersects(Ray ray) {
 	best_h.t = INFINITY;
 	for (int i=0; i<shapes.size(); i++) {
 		Hit h = shapes[i]->intersect(ray);
-		// printf("shape %d, hit.t %f, hit.point %f %f %f\n", i, h.t, h.point.x, h.point.y, h.point.z);
-		// printf("normal: %f %f %f\n", h.norm.x, h.norm.y, h.norm.z);
 		if (h.t > 0 && h.t < best_h.t) {
 			best_h = h;
 		}
 	}
-	// printf("%f\n",best_h.t);
+
 	return best_h;
 }
 
-void Scene::test() {
-	printf("TEST\n\n");
-	
-	// Ray r;
-	// r.origin = Vec3f(1.5, 2.7, 0.15);
-	// r.dir = Vec3f(-1, 0, 0);
-	// Hit h = intersects(r);
-	// printf("%f %f %f\n", h.point.x, h.point.y, h.point.z);
-	// printf("%f\n",h.t);
-}
 
 
 } //namespace rt

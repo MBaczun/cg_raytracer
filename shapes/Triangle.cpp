@@ -59,7 +59,6 @@ Triangle::Triangle():Shape(){}
 
         float u = (point-*v0).dotProduct(base) / base_length;
         float v = (point-*v0).dotProduct(vertical_component) / height;
-        //printf("u: %f, v: %f\n", u, v);
         return Vec2f(u,v);
     }
 

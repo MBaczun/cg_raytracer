@@ -35,10 +35,8 @@ namespace rt{
 
                 all_boxes.push_back(box);
             }
-            // printf("far corner: %f %f %f\n", farCorner.x, farCorner.y, farCorner.z);
             aabb.corner = corner;
             aabb.whd = farCorner-corner;
-            // printf("this BVH's AABB: corner %f %f %f, whd %f %f %f\n", aabb.corner.x, aabb.corner.y, aabb.corner.z, aabb.whd.x, aabb.whd.y, aabb.whd.z);
 
             //select split point
             splitAxis;
@@ -50,8 +48,6 @@ namespace rt{
                 splitAxis = 2;
             }
             splitPoint = aabb.corner[splitAxis] + aabb.whd[splitAxis]/2;
-
-            // printf("split axis: %d, split point: %f\n", splitAxis, splitPoint);
 
             //split shapes among child BVHs
             std::vector<Shape*> leftShapes;
@@ -129,9 +125,8 @@ namespace rt{
         if (tz1 > tz2) swap(tz1, tz2); 
 
         //We must go through all "close" planes before we go through any "far" planes
-        //return if further plane is closer
+        //return if a "far" plane is closer.
         if (ty2<tx1 || tx2<ty1) return false; 
-        //now compare to z planes
         if (tx1>tz2 || ty1>tz2 || tx2<tz1 || ty2<tz1) return false; 
         return true; 
     }

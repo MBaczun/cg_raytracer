@@ -26,6 +26,9 @@ int main(int argc, char* argv[]){
 	char* inputFile=argv[1];    //first command line argument holds the path to the json input file
 	char* outputFile=argv[2];   //second command line argument holds the path to the output image file
 
+	//seed random number
+	srand (time(NULL));
+
 	std::printf("Input file: %s\n",inputFile);
 
 	//parse json input file using rapidjson
@@ -47,7 +50,8 @@ int main(int argc, char* argv[]){
 	//
 	// Main function, render scene
 	//
-	Vec3f* pixelbuffer=RayTracer::render(camera, scene, d["nbounces"].GetInt());
+	int spp = d.HasMember("spp") ? d["spp"].GetInt() : 1;
+	Vec3f* pixelbuffer=RayTracer::render(camera, scene, d["nbounces"].GetInt(), spp);
 
 	//free resources when rendering is finished
 	delete scene;

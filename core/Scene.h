@@ -25,11 +25,8 @@ public:
 
 	void createScene(Value& scenespecs);
 
-	Vec3f intersectionColour(Ray* ray);
+	Vec3f intersectionColour(Ray* ray, int spp);
 	Hit intersects(Ray ray);
-
-	void test();
-
 
 private:
 	Shape* bvh;
@@ -37,6 +34,8 @@ private:
 	std::vector<LightSource*> lightSources;
 	std::vector<Shape*> shapes;
 	Vec3f background;
+
+	int spp;
 
 };
 

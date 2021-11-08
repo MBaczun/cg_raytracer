@@ -31,6 +31,7 @@ public:
 
     virtual Vec3f getIs(){return 0;};
     virtual Vec3f getId(){return 0;};
+    virtual Vec3f getSamplePoint(){return 0;};
 
 protected:
 

@@ -25,7 +25,8 @@ Sphere::~Sphere(){}
 
 		Hit h;
 		h.shape = this;
-		//-----------to be implemented -------------
+		
+		// https://en.wikipedia.org/wiki/Line%E2%80%93sphere_intersection
 		Vec3f oc = ray.origin - center;
 		float a = ray.dir.dotProduct(ray.dir);
 		float b = 2.0 * oc.dotProduct(ray.dir);
@@ -35,6 +36,7 @@ Sphere::~Sphere(){}
 			h.t = INFINITY;
 		}
 		else {
+			// make sure to return the closest hitpoint (2 points solutions to the eqation exist)
 			h.t = std::min((-b - sqrt(discriminant)) / (2.0*a), (-b + sqrt(discriminant)) / (2.0*a));
 			h.point = ray.origin + (h.t)*(ray.dir);
 			h.norm = (h.point-center).normalize();

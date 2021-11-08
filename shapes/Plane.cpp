@@ -10,8 +10,6 @@ namespace rt{
 
 Plane::Plane():Shape(){}
 
-//Plane::~Plane(){}
-
 
 	Hit Plane::intersect(Ray ray){
 
@@ -20,7 +18,7 @@ Plane::Plane():Shape(){}
         h.t = INFINITY;
 
         Vec3f normal = (v0-v1).crossProduct(v0-v2).normalize();
-        // return early if the ray is perpendicular.
+        // return early if the ray is perpendicular to the normal.
         if (ray.dir.dotProduct(normal)==0) return h;
         //otherwise calculate point of intersection:
         float dist = (v3-ray.origin).dotProduct(normal) / ray.dir.dotProduct(normal);
@@ -33,8 +31,6 @@ Plane::Plane():Shape(){}
         Vec3f height = v3-v0;
         float x = (p-v0).dotProduct(width) / width.length();
         float y = (p-v0).dotProduct(height) / height.length();
-        //printf("p: %f %f %f, x: %f, y: %f, width: %f %f %f, height: %f %f %f\n", p.x, p.y, p.z, x, y, width.x, width.y, width.z, height.x, height.y, height.z);
-        //printf("p-v0: %f %f %f\n",(p-v0).x, (p-v0).y, (p-v0).z);
 
         if (x>=0 && x<= width.length() && y>=0 && y<=height.length()) {
             h.t = dist;
@@ -53,7 +49,6 @@ Plane::Plane():Shape(){}
         Vec3f p = (point-v0);
         float u = (p.dotProduct(width) / width.length())/width.length();
         float v = (p.dotProduct(height) / height.length())/height.length();
-        //printf("u: %f, v: %f\n", u, v);
         return(Vec2f(u,v));
     }
 

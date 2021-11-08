@@ -21,13 +21,13 @@ public:
 
 	RayTracer();
 
-	static Vec3f* render(Camera* camera, Scene* scene, int nbounces);
+	static Vec3f* render(Camera* camera, Scene* scene, int nbounces, int spp);
 	static Vec3f* tonemap(Vec3f* pixelbuffer, int size);
 
 
 private:
 
-	static Vec3f castRay(Ray* ray, Scene* scene);
+	static Vec3f castRay(Ray* ray, Scene* scene, int spp);
 
 };
 

@@ -28,18 +28,17 @@ namespace rt{
 
         std::string line;
         printf("Reading PLY model %s\n", file.c_str());
-        ifstream MyReadFile(file.c_str());
-        // skip to start of vertices
+        ifstream PLYfile(file.c_str());
 
-        int c = 0;
+        // skip the header (all relevant header info is in JSON)
         while (!(line.compare("end_header")==0)) {
-            getline (MyReadFile, line);
+            getline (PLYfile, line);
         }
         
         printf("Parsing vertices...\n");
         // parse vertices
         for (int i=0; i<v_count; i++) {
-            getline (MyReadFile, line);
+            getline (PLYfile, line);
             Vec3f* vertex = getVectorFromLine(line, pos, scale, true);
             vertices.push_back(vertex);
             maxX = std::max(maxX, vertex->x);
@@ -55,17 +54,18 @@ namespace rt{
         printf("Parsing faces...\n");
         // parse faces
         std::vector<Shape*> faces;
-        while (getline (MyReadFile, line)) {
+        while (getline (PLYfile, line)) {
             Vec3f* corners = getVectorFromLine(line, Vec3f(0), 1, false);
             Triangle* triangle = new Triangle(vertices[corners->x],vertices[corners->y], vertices[corners->z]);
             faces.push_back(triangle);
         }
         bvh = new BVH(faces);
 
-        MyReadFile.close();
+        PLYfile.close();
     }
 
     Vec3f* TriMesh::getVectorFromLine(std::string s, Vec3f pos, float scale, bool rotate) {
+        //just a helper function to convert a string to a Vec3f. extra arguments are here if we need to apply a transformation to the model
         vector<string> words{};
         int index = 0;
         while ((index = s.find(" ")) != string::npos) {
@@ -75,9 +75,7 @@ namespace rt{
         int l = words.size();
         Vec3f point = Vec3f(atof(words[l-3].c_str())*scale, atof(words[l-2].c_str())*scale, atof(words[l-1].c_str())*scale);
         if (rotate) {
-            // printf("point %f %f %f\n", point.x, point.y, point.z);
             rot.multVecMatrix(point, point);
-            // printf("rotated: %f %f %f\n", point.x, point.y, point.z);
         }
         Vec3f* v = new Vec3f(point.x+pos.x, point.y+pos.y, point.z+pos.z);
         return v;

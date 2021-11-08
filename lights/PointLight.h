@@ -20,6 +20,7 @@ public:
 
     Vec3f getIs(){ return is;}
     Vec3f getId(){ return id;}
+    Vec3f getSamplePoint(){return pos;};
 
 private:
 
